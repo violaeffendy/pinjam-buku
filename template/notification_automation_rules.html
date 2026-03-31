@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#5b13ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#161022",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Notification Automation Rules</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Header -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 bg-white dark:bg-slate-900 px-6 py-3 md:px-20 lg:px-40">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-6">
+<span class="material-symbols-outlined text-3xl">auto_stories</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight">LMS Admin</h2>
+</div>
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-slate-500 flex border-none bg-slate-100 dark:bg-slate-800 items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-slate-100 focus:outline-0 focus:ring-0 border-none bg-slate-100 dark:bg-slate-800 focus:border-none h-full placeholder:text-slate-500 px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search rules..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Catalog</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Members</a>
+<a class="text-primary text-sm font-bold" href="#">Automation</a>
+</nav>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-xl">help</span>
+</button>
+</div>
+<div class="bg-primary/20 aspect-square rounded-full size-10 flex items-center justify-center border border-primary/30">
+<span class="text-primary font-bold text-sm">JD</span>
+</div>
+</div>
+</header>
+<main class="flex-1 px-6 md:px-20 lg:px-40 py-8">
+<div class="flex flex-col gap-8">
+<!-- Title Section -->
+<div class="flex flex-col gap-2">
+<nav class="flex items-center gap-2 text-sm text-slate-500 mb-2">
+<span>Settings</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span>Automation</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-primary">Notification Rules</span>
+</nav>
+<h1 class="text-slate-900 dark:text-slate-100 text-4xl font-black leading-tight tracking-tight">Notification Automation Rules</h1>
+<p class="text-slate-600 dark:text-slate-400 text-lg max-w-2xl">Configure automated reminders and overdue alert sequences to help members keep track of their borrowed items.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Configuration Form Column -->
+<div class="lg:col-span-2 flex flex-col gap-8">
+<!-- Reminder Schedule Card -->
+<section class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-primary/10 shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<div class="size-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<h2 class="text-xl font-bold">Reminder Schedule</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">First Reminder</label>
+<div class="relative">
+<input class="form-input w-full rounded-lg border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-primary focus:border-primary px-4 py-3" placeholder="e.g. 3" type="number"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm">days before due</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Overdue Frequency</label>
+<div class="relative">
+<input class="form-input w-full rounded-lg border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-primary focus:border-primary px-4 py-3" placeholder="e.g. 2" type="number"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm">day interval</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Message Template Card -->
+<section class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-primary/10 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<h2 class="text-xl font-bold">Message Template</h2>
+</div>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 text-xs font-semibold bg-primary/10 text-primary rounded-lg border border-primary/20 hover:bg-primary/20 transition-all">Reset Default</button>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Email Subject</label>
+<input class="form-input w-full rounded-lg border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-4 py-3" type="text" value="Reminder: Your library loan is due soon"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Message Body</label>
+<div class="rounded-lg border border-slate-200 dark:border-slate-700 overflow-hidden">
+<div class="flex items-center gap-2 p-2 bg-slate-50 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 overflow-x-auto">
+<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded"><span class="material-symbols-outlined text-lg">format_bold</span></button>
+<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded"><span class="material-symbols-outlined text-lg">format_italic</span></button>
+<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded"><span class="material-symbols-outlined text-lg">format_underlined</span></button>
+<div class="w-px h-5 bg-slate-300 dark:bg-slate-600 mx-1"></div>
+<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded"><span class="material-symbols-outlined text-lg">format_list_bulleted</span></button>
+<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded"><span class="material-symbols-outlined text-lg">link</span></button>
+<div class="w-px h-5 bg-slate-300 dark:bg-slate-600 mx-1"></div>
+<button class="px-2 py-1 flex items-center gap-1 text-xs font-medium text-primary bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-sm">add_circle</span> Insert Variable
+                                                </button>
+</div>
+<textarea class="form-textarea w-full border-none bg-white dark:bg-slate-900 focus:ring-0 p-4 text-slate-700 dark:text-slate-300" rows="8">Hi {{member_name}},
+
+This is a friendly reminder that "{{book_title}}" is due back at the library on {{due_date}}. 
+
+If you would like to renew your loan, please visit your dashboard or reply to this message.
+
+Thank you,
+{{library_name}} Team</textarea>
+</div>
+<p class="text-xs text-slate-500 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">info</span>
+                                            Available variables: {{member_name}}, {{book_title}}, {{due_date}}, {{library_name}}
+                                        </p>
+</div>
+</div>
+</section>
+<div class="flex justify-end gap-4 mt-2">
+<button class="px-6 py-3 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-bold hover:bg-slate-50 transition-colors">Discard Changes</button>
+<button class="px-8 py-3 rounded-lg bg-primary text-white font-bold shadow-lg shadow-primary/20 hover:brightness-110 transition-all">Save Automation Rules</button>
+</div>
+</div>
+<!-- Preview Column -->
+<div class="lg:col-span-1">
+<div class="sticky top-8 flex flex-col gap-6">
+<h3 class="text-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">visibility</span>
+                                    Live Preview
+                                </h3>
+<div class="bg-white dark:bg-slate-900 rounded-2xl border border-primary/10 shadow-xl overflow-hidden">
+<div class="bg-primary p-4 text-white">
+<div class="flex items-center justify-between mb-4">
+<span class="material-symbols-outlined text-sm">menu</span>
+<span class="text-xs font-bold uppercase tracking-widest opacity-80">Notification Preview</span>
+<span class="material-symbols-outlined text-sm">settings</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined">library_books</span>
+</div>
+<div>
+<p class="text-xs opacity-80">From Central Library</p>
+<p class="font-bold leading-tight">Reminder: Loan due soon</p>
+</div>
+</div>
+</div>
+<div class="p-6">
+<div class="flex flex-col gap-4 text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+<p>Hi Alex Rivera,</p>
+<p>This is a friendly reminder that <strong class="text-slate-900 dark:text-slate-100">"The Design of Everyday Things"</strong> is due back at the library on <strong class="text-slate-900 dark:text-slate-100">October 24th, 2023</strong>.</p>
+<p>If you would like to renew your loan, please visit your dashboard or reply to this message.</p>
+<p>Thank you,<br/>Central Library Team</p>
+</div>
+<div class="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800">
+<button class="w-full py-3 bg-primary text-white rounded-xl font-bold text-sm">Renew Now</button>
+<p class="text-[10px] text-center text-slate-400 mt-4 italic">Sent via LMS Auto-Reminder Service</p>
+</div>
+</div>
+</div>
+<div class="bg-primary/5 rounded-xl border border-primary/10 p-4">
+<h4 class="text-sm font-bold text-primary flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-sm">lightbulb</span>
+                                        Pro-Tip
+                                    </h4>
+<p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                                        Personalizing the template with <code class="bg-primary/10 px-1 rounded">{{member_name}}</code> leads to 24% higher engagement and faster return rates.
+                                    </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

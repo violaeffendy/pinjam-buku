@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Filtered Admin Monthly Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1313ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101022",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .custom-scrollbar::-webkit-scrollbar {
+                width: 6px;
+            }
+            .custom-scrollbar::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            .custom-scrollbar::-webkit-scrollbar-thumb {
+                background: #e2e8f0;
+                border-radius: 10px;
+            }
+            .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+                background: #1e293b;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex flex-col min-h-screen w-full overflow-x-hidden">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 px-10 py-3 bg-white dark:bg-background-dark sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight">Library Admin</h2>
+</div>
+<label class="flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full">
+<div class="text-slate-500 dark:text-slate-400 flex border-none bg-slate-100 dark:bg-slate-800 items-center justify-center pl-4 rounded-l-xl border-r-0">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-xl text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary border-none bg-slate-100 dark:bg-slate-800 h-full placeholder:text-slate-500 dark:placeholder:text-slate-400 pl-2 text-base font-normal" placeholder="Search analytics..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-8 items-center">
+<nav class="flex items-center gap-6">
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Dashboard</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary py-1" href="#">Reports</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Inventory</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Settings</a>
+</nav>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-xl h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCGmPmKc_rcIGS1LP-foFhjG6v22Dhg15IGkcSadGCGDrVc2HUN9Pr6g41eCCp1_zMqODTMoDdyAzqqHFyVCnleBH_54MrfsrDxG8f6rpNOBDQ79OYKhlrSSbLooJfcvoYRewd0BQqAnmR_Bzbx1ngMjXIl17CoSKsoDEkyXEU5KMSQpt7-0tGh0gLIKKk502srW4Fog_KXPyn32Reze84rChbLQPAsvObOEo5TW6GQEhyQQPxrHvYWIR1dWSInW9D570GHThOFLY0");'></div>
+</div>
+</header>
+<main class="flex-1 max-w-[1440px] mx-auto w-full px-6 py-8">
+<div class="flex flex-wrap justify-between items-end gap-6 mb-8">
+<div class="flex flex-col gap-1">
+<h1 class="text-slate-900 dark:text-white text-4xl font-black leading-tight tracking-tight">Monthly Analytics Report</h1>
+<p class="text-slate-500 dark:text-slate-400 text-base font-normal">Filtered performance overview for the library</p>
+</div>
+<div class="flex items-center gap-3 flex-wrap">
+<div class="relative">
+<button class="flex items-center justify-between gap-3 rounded-xl h-11 px-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm text-sm font-semibold text-slate-700 dark:text-slate-200 hover:border-primary transition-all min-w-[220px]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-slate-400">filter_list</span>
+<span>Categories (3)</span>
+</div>
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</button>
+<div class="absolute right-0 mt-2 w-64 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-xl z-10 p-2 hidden group-hover:block">
+<div class="flex flex-col gap-1">
+<label class="flex items-center gap-3 p-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg cursor-pointer">
+<input checked="" class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm font-medium">Fiction</span>
+</label>
+<label class="flex items-center gap-3 p-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg cursor-pointer">
+<input checked="" class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm font-medium">Science</span>
+</label>
+<label class="flex items-center gap-3 p-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg cursor-pointer">
+<input checked="" class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm font-medium">History</span>
+</label>
+<label class="flex items-center gap-3 p-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg cursor-pointer">
+<input class="rounded border-slate-300 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm font-medium">Biography</span>
+</label>
+</div>
+</div>
+</div>
+<div class="flex items-center bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-1 shadow-sm">
+<button class="flex items-center justify-center size-9 text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<span class="px-4 text-sm font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wider">October 2023</span>
+<button class="flex items-center justify-center size-9 text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+<button class="flex items-center justify-center gap-2 rounded-xl h-11 px-6 bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span>Export</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+<div class="bg-white dark:bg-slate-900 flex flex-col gap-2 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm transition-transform hover:-translate-y-1">
+<div class="flex justify-between items-start">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-widest">Borrowings</p>
+<div class="size-8 flex items-center justify-center bg-indigo-50 dark:bg-indigo-900/20 text-primary rounded-lg">
+<span class="material-symbols-outlined text-[20px]">auto_stories</span>
+</div>
+</div>
+<p class="text-slate-900 dark:text-white text-3xl font-black leading-tight">742</p>
+<div class="flex items-center gap-1 mt-1 text-emerald-500">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+<span class="text-sm font-bold">+15.2%</span>
+<span class="text-slate-400 font-normal text-xs ml-1">(Filtered)</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 flex flex-col gap-2 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm transition-transform hover:-translate-y-1">
+<div class="flex justify-between items-start">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-widest">Avg. Fine</p>
+<div class="size-8 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 rounded-lg">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+</div>
+</div>
+<p class="text-slate-900 dark:text-white text-3xl font-black leading-tight">$4.50</p>
+<div class="flex items-center gap-1 mt-1 text-emerald-500">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+<span class="text-sm font-bold">+2.4%</span>
+<span class="text-slate-400 font-normal text-xs ml-1">avg</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 flex flex-col gap-2 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm transition-transform hover:-translate-y-1">
+<div class="flex justify-between items-start">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-widest">Active Holds</p>
+<div class="size-8 flex items-center justify-center bg-indigo-50 dark:bg-indigo-900/20 text-primary rounded-lg">
+<span class="material-symbols-outlined text-[20px]">timer</span>
+</div>
+</div>
+<p class="text-slate-900 dark:text-white text-3xl font-black leading-tight">88</p>
+<div class="flex items-center gap-1 mt-1 text-rose-500">
+<span class="material-symbols-outlined text-[18px]">trending_down</span>
+<span class="text-sm font-bold">-5.1%</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 flex flex-col gap-2 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm transition-transform hover:-translate-y-1">
+<div class="flex justify-between items-start">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-widest">Return Rate</p>
+<div class="size-8 flex items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 rounded-lg">
+<span class="material-symbols-outlined text-[20px]">assignment_return</span>
+</div>
+</div>
+<p class="text-slate-900 dark:text-white text-3xl font-black leading-tight">96.8%</p>
+<div class="flex items-center gap-1 mt-1 text-emerald-500">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+<span class="text-sm font-bold">+3.2%</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+<div class="lg:col-span-2 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<div class="flex flex-col gap-1">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Trend: Borrowings vs Returns</h3>
+<p class="text-xs text-slate-500">Showing data for selected categories</p>
+</div>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-primary"></div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Borrowings</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-emerald-500"></div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Returns</span>
+</div>
+</div>
+</div>
+<div class="relative h-[300px] w-full mt-4">
+<svg class="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 800 300">
+<line class="text-slate-100 dark:text-slate-800" stroke="currentColor" stroke-width="1" x1="0" x2="800" y1="0" y2="0"></line>
+<line class="text-slate-100 dark:text-slate-800" stroke="currentColor" stroke-width="1" x1="0" x2="800" y1="75" y2="75"></line>
+<line class="text-slate-100 dark:text-slate-800" stroke="currentColor" stroke-width="1" x1="0" x2="800" y1="150" y2="150"></line>
+<line class="text-slate-100 dark:text-slate-800" stroke="currentColor" stroke-width="1" x1="0" x2="800" y1="225" y2="225"></line>
+<line class="text-slate-200 dark:text-slate-700" stroke="currentColor" stroke-width="2" x1="0" x2="800" y1="300" y2="300"></line>
+<path d="M0 180 Q 150 140, 300 200 T 500 80 T 800 120 V 300 H 0 Z" fill="url(#grad-primary)" opacity="0.1"></path>
+<path d="M0 180 Q 150 140, 300 200 T 500 80 T 800 120" fill="none" stroke="#1313ec" stroke-linecap="round" stroke-width="4"></path>
+<path d="M0 220 Q 150 200, 300 220 T 500 150 T 800 180" fill="none" stroke="#10b981" stroke-dasharray="8 4" stroke-linecap="round" stroke-width="4"></path>
+<defs>
+<linearGradient id="grad-primary" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#1313ec;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#1313ec;stop-opacity:0"></stop>
+</linearGradient>
+</defs>
+</svg>
+<div class="flex justify-between mt-4 px-2">
+<span class="text-[10px] text-slate-400 font-black uppercase">Oct 1</span>
+<span class="text-[10px] text-slate-400 font-black uppercase">Oct 8</span>
+<span class="text-[10px] text-slate-400 font-black uppercase">Oct 15</span>
+<span class="text-[10px] text-slate-400 font-black uppercase">Oct 22</span>
+<span class="text-[10px] text-slate-400 font-black uppercase">Oct 31</span>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-6">Filtered Category Focus</h3>
+<div class="flex flex-col gap-6">
+<div class="space-y-2">
+<div class="flex justify-between text-sm font-semibold">
+<span class="text-slate-600 dark:text-slate-300">Fiction</span>
+<span class="text-slate-900 dark:text-white">58%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 58%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-sm font-semibold">
+<span class="text-slate-600 dark:text-slate-300">Science</span>
+<span class="text-slate-900 dark:text-white">24%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 24%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-sm font-semibold">
+<span class="text-slate-600 dark:text-slate-300">History</span>
+<span class="text-slate-900 dark:text-white">18%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 18%"></div>
+</div>
+</div>
+<div class="mt-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-dashed border-slate-200 dark:border-slate-700">
+<p class="text-xs text-slate-500 leading-relaxed">
+<span class="font-bold text-primary">Note:</span> These percentages represent the relative volume among your <span class="font-bold">3 selected categories</span> only.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="p-6 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center bg-white dark:bg-slate-900">
+<div class="flex items-center gap-3">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Top 5 Most Borrowed Books</h3>
+<div class="px-2 py-0.5 bg-primary/10 text-primary text-[10px] font-black uppercase rounded tracking-wider">Filtered Results</div>
+</div>
+<button class="text-primary text-sm font-bold hover:underline">View All Category Stats</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="text-slate-500 dark:text-slate-400 text-[11px] font-black uppercase tracking-widest border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">
+<th class="px-6 py-4">Rank</th>
+<th class="px-6 py-4">Book Details</th>
+<th class="px-6 py-4">Category</th>
+<th class="px-6 py-4">Month Count</th>
+<th class="px-6 py-4">Availability</th>
+<th class="px-6 py-4">Trend</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4">
+<span class="flex items-center justify-center size-8 bg-primary text-white rounded-lg font-black text-sm shadow-md shadow-primary/20">1</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-14 bg-slate-200 dark:bg-slate-800 rounded-lg shadow-sm shrink-0" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDX03NSZwEr3bdH2L6uXLObZ0wEfJum5mZazUhb8ba7_V2xea9AnXrzlEy2TPxemwfvoQ-dkRA7usN-CyFowxgI5PN23borvyzrHB2LFqgC_935vvpLiX1dRbIbWnzpTPcYy75UUSXdvaE3lEw_fX4d7JXtsmAE2zghxaEwfiD_nQZcrVlFIBopbhqRgbJVRXFVfSlpCon25UgIkJ8lI7weRDIoknbzn9_zoluPLE3L7dy4coMF8L1NGd-w6o15x6Zb6Wwyoc6lHPI'); background-size: cover;"></div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white text-sm">The Psychology of Money</p>
+<p class="text-xs text-slate-500">Morgan Housel</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">Science</span>
+</td>
+<td class="px-6 py-4 font-black text-slate-900 dark:text-white">84</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-emerald-500 font-bold text-[11px] uppercase tracking-wider">
+<div class="size-1.5 rounded-full bg-emerald-500"></div>
+<span>High Demand</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="material-symbols-outlined text-emerald-500">trending_up</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4">
+<span class="flex items-center justify-center size-8 bg-primary/20 text-primary rounded-lg font-black text-sm">2</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-14 bg-slate-200 dark:bg-slate-800 rounded-lg shadow-sm shrink-0" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDH3tEMIOLziAGbOy-j755qJ6YICUuGpDvoAwjP6O8TbW4qnceqFe4eXszvBozAMOHAkbhs89kyBTPMnB_7Ug0nXIlHCZFJVOKBFCco3eA5zZgLXzDUjHV9JJV_mgQi77GVpfcPmbhrPjXKcg-z-jJHYWJW7B4UKhAom-O-zEHl_20WshA7Lrh2A_kEFBz0jKFlzmEqhbOPWX-yCqCGZLK9qWgzymvOOLNYiu5L1KiwMMaSNK5MHG8Vazt0D9DBmKqFMLRSRbqR9Ek'); background-size: cover;"></div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white text-sm">Dune</p>
+<p class="text-xs text-slate-500">Frank Herbert</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-slate-100 text-slate-700 dark:bg-slate-700/50 dark:text-slate-300">Fiction</span>
+</td>
+<td class="px-6 py-4 font-black text-slate-900 dark:text-white">65</td>
+<td class="px-6 py-4 text-emerald-500 font-bold text-[11px] uppercase tracking-wider">
+<div class="flex items-center gap-1.5">
+<div class="size-1.5 rounded-full bg-emerald-500"></div>
+<span>In Stock</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="material-symbols-outlined text-emerald-500">trending_up</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4">
+<span class="flex items-center justify-center size-8 bg-primary/20 text-primary rounded-lg font-black text-sm">3</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-14 bg-slate-200 dark:bg-slate-800 rounded-lg shadow-sm shrink-0" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAQCuk90oJsZI8uGVp_a9M0B7jlp8O1SrxefqSOYJc_XTLwcNviMRIsx7uf5Y9M_5iGvyUx8_RMcp0zmHqLTqZb7aoZqWRutEWHb45KHeFecQDE0Er3q9uCqa5DQvKG096_y7UqEP14Sixaw_3ZGccNMRMIBag76EpeU0A3Ix7g71SU1GnZb1PjMGJDO5VJq8Vugc_Npmya51MTZkpoMjE5l_WlFtfh2FGyl-6HFTX9PH-wdUtMcc_N0o4pSsrxnjT8ErVTAeAStu4'); background-size: cover;"></div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white text-sm">Project Hail Mary</p>
+<p class="text-xs text-slate-500">Andy Weir</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-slate-100 text-slate-700 dark:bg-slate-700/50 dark:text-slate-300">Fiction</span>
+</td>
+<td class="px-6 py-4 font-black text-slate-900 dark:text-white">52</td>
+<td class="px-6 py-4 text-emerald-500 font-bold text-[11px] uppercase tracking-wider">
+<div class="flex items-center gap-1.5">
+<div class="size-1.5 rounded-full bg-emerald-500"></div>
+<span>In Stock</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="material-symbols-outlined text-slate-400">horizontal_rule</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4">
+<span class="flex items-center justify-center size-8 bg-primary/20 text-primary rounded-lg font-black text-sm">4</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-14 bg-slate-200 dark:bg-slate-800 rounded-lg shadow-sm shrink-0" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAiK9V665x3ng1pgiGrBubUJI3cn7XnLQM8UzKZ1A1i-tOXV0ujUokpH5PpjTOPU6zrAGnFLPhHsciF86ZlbfDq7uDhMm89fnhT22J1YBms6bks2Vrd_IxXvIDdHNO4GZXKgClTgog5_VWj0bSAuJOSwEQTIwtcAiw9Eu9TOHffNZAmkOctcrqjytI-Tz_KEvB9RYd5V_CQqUTfyI2LapnmL9vsZsBFoGdDCRk1wrXPoPIz2BgD93zN3ZWMbbzj2rZ6w76mJz5s46k'); background-size: cover;"></div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white text-sm">Sapiens</p>
+<p class="text-xs text-slate-500">Yuval Noah Harari</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">History</span>
+</td>
+<td class="px-6 py-4 font-black text-slate-900 dark:text-white">47</td>
+<td class="px-6 py-4 text-orange-500 font-bold text-[11px] uppercase tracking-wider">
+<div class="flex items-center gap-1.5">
+<div class="size-1.5 rounded-full bg-orange-500"></div>
+<span>Limited</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="material-symbols-outlined text-rose-500">trending_down</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4">
+<span class="flex items-center justify-center size-8 bg-primary/20 text-primary rounded-lg font-black text-sm">5</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-14 bg-slate-200 dark:bg-slate-800 rounded-lg shadow-sm shrink-0" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvmEHRRsxbfKDS0kRoOp1MpbhOSuuVWXA3jpEkbzmHd0sU3f-k1508chib6f37AVAu-88ySovcTc_TjZORPA9HgcZp9Ct5hWiOMDeTzJXvCeySFw0ahVVj9lbzMyrX_LDH-qTj6-tz_lT8KJhsXLhdhW5qCCyYmzGlePeLJwX5jQV9-8N-vYm7zXLfS6gw_VtOVndHWgrNvgVsIW7OObDv3MEeULUCl9Qx2owC4P0j9opZiEEbmsiL4hO0k4noBc58y2Crg4B3P1k'); background-size: cover;"></div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white text-sm">Guns, Germs, and Steel</p>
+<p class="text-xs text-slate-500">Jared Diamond</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">History</span>
+</td>
+<td class="px-6 py-4 font-black text-slate-900 dark:text-white">39</td>
+<td class="px-6 py-4 text-emerald-500 font-bold text-[11px] uppercase tracking-wider">
+<div class="flex items-center gap-1.5">
+<div class="size-1.5 rounded-full bg-emerald-500"></div>
+<span>In Stock</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="material-symbols-outlined text-emerald-500">trending_up</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+<footer class="mt-auto px-6 py-8 border-t border-slate-200 dark:border-slate-800 text-center">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">© 2023 Library Administration Portal. All systems operational.</p>
+</footer>
+</div>
+
+</body></html>

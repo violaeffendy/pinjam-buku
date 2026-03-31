@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Category Performance Analytics View</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#5b13ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#161022",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-10 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8 bg-primary/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight">Library Admin</h2>
+</div>
+<label class="flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-primary/60 flex border-none bg-primary/5 items-center justify-center pl-4 rounded-l-lg">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg text-slate-900 focus:outline-0 focus:ring-0 border-none bg-primary/5 placeholder:text-primary/40 px-4 pl-2 text-sm font-normal" placeholder="Search report data..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<nav class="flex items-center gap-9">
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary py-1" href="#">Categories</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Inventory</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Reports</a>
+</nav>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="User profile avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAgBEk0ZZyD5tHe4_PZDyJ1ylB1J1AMGqpXfsl1qpBEZbCJUaYD-5PixgLHDCAi56z73uavygMyRYt473EOOlpO5PNHr4LNf_AcjvzM9WW2Z4FbFI0zgfNM2pzZJX_oHZobwwZfZLgmXBJYK2B0bd5bUkdCyVLTDjoYSG-NH4RAYpvQlGTEPLTSu6nt9WF_75z16gDnYpPBk5isoybzfhdeL66NjGEq1hgBAtcTt-Vpxh7sFBwyIaHaYfq2mldcIyP1BLEdKhumOWA");'></div>
+</div>
+</header>
+<main class="flex flex-1 justify-center py-8">
+<div class="layout-content-container flex flex-col max-w-[1200px] flex-1 px-4 sm:px-10">
+<!-- Header Section -->
+<div class="flex flex-wrap justify-between items-end gap-3 mb-8">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 mb-1">
+<a class="text-primary text-sm font-medium hover:underline" href="#">Reports</a>
+<span class="text-slate-400 text-sm">/</span>
+<span class="text-slate-600 dark:text-slate-400 text-sm">Category Performance</span>
+</div>
+<h1 class="text-slate-900 dark:text-slate-100 text-4xl font-black leading-tight tracking-tight">Analytics Overview</h1>
+<p class="text-slate-500 dark:text-slate-400 text-base font-normal">In-depth borrowing trends across major library departments</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center justify-center rounded-lg h-11 px-6 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-bold hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined mr-2 text-[20px]">filter_list</span>
+                                Filter Period
+                            </button>
+<button class="flex items-center justify-center rounded-lg h-11 px-6 bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined mr-2 text-[20px]">download</span>
+                                Export Report
+                            </button>
+</div>
+</div>
+<!-- Chart & Summary Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+<!-- Bar Chart Component -->
+<div class="lg:col-span-2 bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold">Borrowings per Category</h3>
+<div class="flex gap-2">
+<span class="flex items-center gap-1 text-[12px] text-slate-500"><span class="w-3 h-3 bg-primary rounded-sm"></span> Current Month</span>
+<span class="flex items-center gap-1 text-[12px] text-slate-500"><span class="w-3 h-3 bg-primary/20 rounded-sm"></span> Average</span>
+</div>
+</div>
+<div class="grid min-h-[240px] grid-flow-col gap-8 grid-rows-[1fr_auto] items-end justify-items-center">
+<div class="w-full flex flex-col justify-end items-center gap-1 group">
+<div class="w-12 bg-primary/20 rounded-t-sm h-[30%]"></div>
+<div class="w-12 bg-primary rounded-t-sm h-[60%] shadow-lg shadow-primary/10"></div>
+<p class="mt-4 text-slate-500 dark:text-slate-400 text-[12px] font-bold uppercase tracking-wider">Fiction</p>
+</div>
+<div class="w-full flex flex-col justify-end items-center gap-1 group">
+<div class="w-12 bg-primary/20 rounded-t-sm h-[45%]"></div>
+<div class="w-12 bg-primary rounded-t-sm h-[85%] shadow-lg shadow-primary/10"></div>
+<p class="mt-4 text-slate-500 dark:text-slate-400 text-[12px] font-bold uppercase tracking-wider">Science</p>
+</div>
+<div class="w-full flex flex-col justify-end items-center gap-1 group">
+<div class="w-12 bg-primary/20 rounded-t-sm h-[20%]"></div>
+<div class="w-12 bg-primary rounded-t-sm h-[40%] shadow-lg shadow-primary/10"></div>
+<p class="mt-4 text-slate-500 dark:text-slate-400 text-[12px] font-bold uppercase tracking-wider">History</p>
+</div>
+<div class="w-full flex flex-col justify-end items-center gap-1 group">
+<div class="w-12 bg-primary/20 rounded-t-sm h-[55%]"></div>
+<div class="w-12 bg-primary rounded-t-sm h-[75%] shadow-lg shadow-primary/10"></div>
+<p class="mt-4 text-slate-500 dark:text-slate-400 text-[12px] font-bold uppercase tracking-wider">Arts</p>
+</div>
+<div class="w-full flex flex-col justify-end items-center gap-1 group">
+<div class="w-12 bg-primary/20 rounded-t-sm h-[35%]"></div>
+<div class="w-12 bg-primary rounded-t-sm h-[90%] shadow-lg shadow-primary/10"></div>
+<p class="mt-4 text-slate-500 dark:text-slate-400 text-[12px] font-bold uppercase tracking-wider">Tech</p>
+</div>
+<div class="w-full flex flex-col justify-end items-center gap-1 group">
+<div class="w-12 bg-primary/20 rounded-t-sm h-[40%]"></div>
+<div class="w-12 bg-primary rounded-t-sm h-[50%] shadow-lg shadow-primary/10"></div>
+<p class="mt-4 text-slate-500 dark:text-slate-400 text-[12px] font-bold uppercase tracking-wider">Kids</p>
+</div>
+</div>
+</div>
+<!-- Mini Stats Card -->
+<div class="flex flex-col gap-6">
+<div class="flex-1 bg-primary p-6 rounded-xl text-white shadow-xl shadow-primary/20 relative overflow-hidden">
+<div class="relative z-10">
+<p class="text-primary-100/80 text-sm font-medium mb-1">Total Borrowings</p>
+<h2 class="text-4xl font-black mb-2">12,450</h2>
+<div class="flex items-center gap-2">
+<span class="flex items-center bg-white/20 px-2 py-0.5 rounded text-[12px] font-bold">
+<span class="material-symbols-outlined text-[14px] mr-1">trending_up</span> +12.5%
+                                        </span>
+<span class="text-white/60 text-[12px]">from last month</span>
+</div>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-9xl text-white/10 select-none">auto_stories</span>
+</div>
+<div class="flex-1 bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+<div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-1">Avg. Loan Duration</p>
+<h2 class="text-3xl font-black text-slate-900 dark:text-slate-100">14.2 Days</h2>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden mt-4">
+<div class="bg-primary h-full w-[65%]" style="width: 65%;"></div>
+</div>
+<p class="text-slate-400 text-[11px] mt-2">Target: 10 Days avg.</p>
+</div>
+</div>
+</div>
+<!-- Search & Filter Controls -->
+<div class="flex flex-col md:flex-row gap-4 mb-6 items-center">
+<div class="flex-1 w-full">
+<label class="flex flex-col w-full h-12">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-primary transition-all">
+<div class="text-slate-400 flex items-center justify-center pl-4 rounded-l-lg">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg text-slate-900 dark:text-slate-100 focus:outline-0 focus:ring-0 border-none bg-transparent placeholder:text-slate-400 px-4 pl-2 text-base font-normal" placeholder="Search by category name..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex gap-2 w-full md:w-auto">
+<select class="form-select h-12 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 rounded-lg text-slate-600 dark:text-slate-400 focus:ring-primary focus:border-primary min-w-[160px]">
+<option>Sort by: Most Borrowed</option>
+<option>Sort by: Total Books</option>
+<option>Sort by: Duration</option>
+<option>Sort by: Category Name</option>
+</select>
+<button class="flex items-center justify-center rounded-lg h-12 w-12 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-500">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Categories Table -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+<th class="px-6 py-4 text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider">Category</th>
+<th class="px-6 py-4 text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider">Total Books</th>
+<th class="px-6 py-4 text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider">Times Borrowed</th>
+<th class="px-6 py-4 text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider">Avg. Loan Duration</th>
+<th class="px-6 py-4 text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider text-right">Trend</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-indigo-50 dark:bg-indigo-900/30 flex items-center justify-center text-primary font-bold">F</div>
+<span class="font-semibold text-slate-900 dark:text-slate-100">Fiction</span>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400 font-medium">4,230</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400 font-medium">1,840</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400 font-medium">12.5 days</td>
+<td class="px-6 py-4 text-right">
+<span class="text-green-600 dark:text-green-400 flex items-center justify-end text-sm font-bold">
+<span class="material-symbols-outlined text-sm mr-1">arrow_upward</span> 8%
+                                        </span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 font-bold">S</div>
+<span class="font-semibold text-slate-900 dark:text-slate-100">Science</span>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400 font-medium">2,115</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400 font-medium">2,210</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400 font-medium">18.2 days</td>
+<td class="px-6 py-4 text-right">
+<span class="text-green-600 dark:text-green-400 flex items-center justify-end text-sm font-bold">
+<span class="material-symbols-outlined text-sm mr-1">arrow_upward</span> 15%
+                                        </span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-amber-50 dark:bg-amber-900/30 flex items-center justify-center text-amber-600 font-bold">H</div>
+<span class="font-semibold text-slate-900 dark:text-slate-100">History</span>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400 font-medium">1,450</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400 font-medium">940</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400 font-medium">10.1 days</td>
+<td class="px-6 py-4 text-right">
+<span class="text-red-600 dark:text-red-400 flex items-center justify-end text-sm font-bold">
+<span class="material-symbols-outlined text-sm mr-1">arrow_downward</span> 3%
+                                        </span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-pink-50 dark:bg-pink-900/30 flex items-center justify-center text-pink-600 font-bold">A</div>
+<span class="font-semibold text-slate-900 dark:text-slate-100">Arts</span>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400 font-medium">890</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400 font-medium">750</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400 font-medium">14.0 days</td>
+<td class="px-6 py-4 text-right">
+<span class="text-slate-400 flex items-center justify-end text-sm font-bold">
+<span class="material-symbols-outlined text-sm mr-1">horizontal_rule</span> 0%
+                                        </span>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 font-bold">T</div>
+<span class="font-semibold text-slate-900 dark:text-slate-100">Technology</span>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400 font-medium">3,400</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400 font-medium">2,890</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400 font-medium">21.4 days</td>
+<td class="px-6 py-4 text-right">
+<span class="text-green-600 dark:text-green-400 flex items-center justify-end text-sm font-bold">
+<span class="material-symbols-outlined text-sm mr-1">arrow_upward</span> 22%
+                                        </span>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="px-6 py-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<span class="text-slate-500 text-sm">Showing 1 to 5 of 24 categories</span>
+<div class="flex gap-2">
+<button class="px-3 py-1 rounded border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-50 transition-colors text-sm font-medium">Previous</button>
+<button class="px-3 py-1 rounded bg-primary text-white text-sm font-bold shadow-sm shadow-primary/20">1</button>
+<button class="px-3 py-1 rounded border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-50 transition-colors text-sm font-medium text-sm font-medium">2</button>
+<button class="px-3 py-1 rounded border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-50 transition-colors text-sm font-medium text-sm font-medium">Next</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="mt-auto py-10 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+<div class="max-w-[1200px] mx-auto px-10 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">auto_stories</span>
+<span class="text-slate-900 dark:text-slate-100 font-bold">Library Admin v2.4</span>
+</div>
+<p class="text-slate-500 text-sm">© 2024 Analytics Dashboard. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-slate-400 hover:text-primary transition-colors text-sm" href="#">Terms</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm" href="#">Privacy</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm" href="#">Help Center</a>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</body></html>

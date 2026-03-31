@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Member Dashboard Interface</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#1313ec",
+                "background-light": "#f6f6f8",
+                "background-dark": "#101022",
+              },
+              fontFamily: {
+                "display": ["Inter", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark flex flex-col justify-between p-4">
+<div class="flex flex-col gap-8">
+<div class="flex items-center gap-3 px-2">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">auto_stories</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Libris</h2>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary text-white font-medium" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">search</span>
+<span>Search Books</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">history</span>
+<span>History</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+<span>Fines</span>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3 px-2">
+<img alt="User Profile" class="w-10 h-10 rounded-full object-cover border border-slate-200 dark:border-slate-700" data-alt="Close up portrait of a smiling young man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtglz77iwwTCsgGhYVH-lRXsNqweQGuRGJBAp-r_wq2I7xvJEWZcnMcyYvUTC_fjikJkM2d9yrCid9b9DKuqMK9VMDx_zaHyAH9lczdBMEePaxsjX4uz77C2A50QjCaS0VwiW-hKNR-eqDogHUgJCh5YzJzks0ecpV8NO4AKRkOc0p5J1io6bSxRgluP1prkpvcCsGIikNXUt-ymohqdHmHfwXHEuc_N-vPKWCtUtbAjQY_3HlaKd_pp-kDymJtzmYP9kU7lsNv_4"/>
+<div class="flex flex-col">
+<p class="text-sm font-semibold text-slate-900 dark:text-white leading-none">Alex Rivera</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Premium Member</p>
+</div>
+</div>
+<button class="flex items-center gap-3 px-3 py-2 rounded-lg text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 transition-colors">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span class="text-sm font-medium">Sign Out</span>
+</button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark">
+<!-- Header -->
+<header class="sticky top-0 z-10 flex items-center justify-between px-8 py-4 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">search</span>
+<input class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl py-2 pl-10 pr-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-sm" placeholder="Search by title, author or ISBN..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<div class="px-8 py-6">
+<!-- Welcome Section -->
+<div class="mb-8">
+<h1 class="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Welcome back, Alex!</h1>
+<p class="text-slate-500 dark:text-slate-400 mt-1">You have 2 books due this week. Happy reading!</p>
+</div>
+<!-- Stats Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<span class="p-2 bg-primary/10 text-primary rounded-lg material-symbols-outlined">book_2</span>
+<span class="text-xs font-semibold text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded-full">+1 new</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Borrowed Books</p>
+<h3 class="text-3xl font-bold text-slate-900 dark:text-white mt-1">4</h3>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<span class="p-2 bg-orange-100 text-orange-600 dark:bg-orange-900/20 rounded-lg material-symbols-outlined">running_with_errors</span>
+<span class="text-xs font-semibold text-orange-600 bg-orange-50 dark:bg-orange-900/20 px-2 py-1 rounded-full">Attention</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Late Returns</p>
+<h3 class="text-3xl font-bold text-slate-900 dark:text-white mt-1">1</h3>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<span class="p-2 bg-red-100 text-red-600 dark:bg-red-900/20 rounded-lg material-symbols-outlined">account_balance_wallet</span>
+<span class="text-xs font-semibold text-slate-400 px-2 py-1 rounded-full">Outstanding</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Fines</p>
+<h3 class="text-3xl font-bold text-slate-900 dark:text-white mt-1">$12.50</h3>
+</div>
+</div>
+<!-- Current Loans & Book Discovery -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Current Loans -->
+<div class="lg:col-span-2 space-y-6">
+<div class="flex items-center justify-between">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white">Active Loans</h2>
+<a class="text-primary text-sm font-semibold hover:underline" href="#">View all history</a>
+</div>
+<div class="space-y-4">
+<!-- Loan Item 1 -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 group hover:border-primary/50 transition-all">
+<div class="w-16 h-24 bg-slate-200 dark:bg-slate-800 rounded-lg overflow-hidden flex-shrink-0 shadow-sm">
+<img alt="Book Cover" class="w-full h-full object-cover" data-alt="Minimalist dark book cover design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBT_UlBDoDkYqDOcE130kTuI6nt9xYMqd2r0ZNo-CLv5w7vahibMJe7Ep6gzFAJ1sK4VaQaNyN7tHVdY9wfRmySSt9XDkLBB8_w68ma2JKQSk0t6qhtz9PocWZH1ibDbEWL-7N3CXCQQla1yHx-jiMtPdV74RmfpDVhwpkd6n7sSY8oUNOinocVFeWBMtIqbKQVarIvWsG51JkQXpZ6kv7DwkJ3lXFVyRBgwP03psXgkl8RdINo-OtEuhhdPS0cqlqy5D0rZckUeX8"/>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">The Great Gatsby</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400">F. Scott Fitzgerald</p>
+<div class="mt-3 flex items-center gap-4 text-xs">
+<div class="flex items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+<span>Borrowed: Oct 12</span>
+</div>
+<div class="flex items-center gap-1 text-emerald-600 font-medium">
+<span class="material-symbols-outlined text-sm">event_repeat</span>
+<span>Due in 4 days</span>
+</div>
+</div>
+</div>
+<button class="px-4 py-2 bg-primary/10 text-primary text-xs font-bold rounded-lg hover:bg-primary hover:text-white transition-all">Renew</button>
+</div>
+<!-- Loan Item 2 (Late) -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 p-4 rounded-xl border border-orange-200 dark:border-orange-900/30 group shadow-sm">
+<div class="w-16 h-24 bg-slate-200 dark:bg-slate-800 rounded-lg overflow-hidden flex-shrink-0 shadow-sm">
+<img alt="Book Cover" class="w-full h-full object-cover" data-alt="Abstract orange and black book cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDd1Eq6lK3Moergf96u_Dhlvf_CKHqhwaziq6FAKGxUYlJPZP-w63DcHkjppBFwdr6sG2-naRGdPwehXnTT3TsQ-v2ZrQlL30Ig4bLHCDbwQC0a_lykK3Z5JH8amDJx0lnXVrWHZHNxmpr8tU948ap6mD-y2XTEYdX4vOhUAF32EtH4oOdRIKf1dTSt3SawW9l_IKRWqlOlP0smRxwCBs19bzgY5k6CTZnrTI_dbOjddlnQ-pRNdvgKqy6wBlUs37XVSnxlRbShf7k"/>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-slate-900 dark:text-white">Design Systems</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400">Alla Kholmatova</p>
+<div class="mt-3 flex items-center gap-4 text-xs">
+<div class="flex items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+<span>Borrowed: Sep 28</span>
+</div>
+<div class="flex items-center gap-1 text-red-500 font-bold">
+<span class="material-symbols-outlined text-sm">warning</span>
+<span>Overdue by 2 days</span>
+</div>
+</div>
+</div>
+<button class="px-4 py-2 bg-red-500 text-white text-xs font-bold rounded-lg hover:bg-red-600 shadow-lg shadow-red-500/20 transition-all">Pay Fine</button>
+</div>
+</div>
+</div>
+<!-- Right Column: Recommendations -->
+<div class="space-y-6">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white">Recommended for you</h2>
+<div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 space-y-5">
+<div class="flex gap-4 items-start">
+<div class="w-12 h-16 bg-slate-100 dark:bg-slate-800 rounded-md overflow-hidden flex-shrink-0">
+<img alt="Book thumbnail" class="w-full h-full object-cover" data-alt="Modern blue book cover illustration" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPDxv0PS9vtLo6bLHa2mKCKKXkKm11ohM44syCTrzEnj4IYb7mxhQ-IVTGtWdLGqJd6rlPkkCcF4iEYUja7Vj7ITVxEgrGXBUx7Kqwd_NSFrue4WGoG605ysUNWBPynf6wcEMpyB2wtHFBC9w-wOM4UGMpZLac0r4lsrE0TrhFADR1jcLRQkgPJ9-3Pw7lS3CzsmUYeHIIK5BMG4ZWif2G-vbkdo5YJnmh1V9XZvOIbfHrjD8JAN-R4xOw_GtbaF8rok0k4o4D6gk"/>
+</div>
+<div>
+<h5 class="text-sm font-bold text-slate-900 dark:text-white leading-tight">Thinking, Fast and Slow</h5>
+<p class="text-xs text-slate-500 mt-1">Daniel Kahneman</p>
+<div class="flex items-center gap-1 text-amber-500 mt-1">
+<span class="material-symbols-outlined text-xs fill-1">star</span>
+<span class="text-xs font-bold">4.8</span>
+</div>
+</div>
+</div>
+<div class="flex gap-4 items-start">
+<div class="w-12 h-16 bg-slate-100 dark:bg-slate-800 rounded-md overflow-hidden flex-shrink-0">
+<img alt="Book thumbnail" class="w-full h-full object-cover" data-alt="Journal style vintage book cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYNcy0fFo4Vh2PLBNqOHMMfGv4MuTraWbJeLCyFaEhzY6TKyJbNZSkl-XJHM6q4la6VbRJ8c9grdyfxcLFG3-FETOv_j2NGI-ayNo5Oa9JrCdmgSTJV8ge8i4TNpJsD_La7XsY8RiPW5yFILmzD-M_PXgAgcVPQjcDHSv3n6X5RB1nQ8rrHzwSblW9OPxrAR-l1OJu9uszl6rUXQG7L6_N_ZrPGcGcZxpiRNl38n6LA8I8t20AnguflV6RsRe2i9riLcSzq3z5f4M"/>
+</div>
+<div>
+<h5 class="text-sm font-bold text-slate-900 dark:text-white leading-tight">Atomic Habits</h5>
+<p class="text-xs text-slate-500 mt-1">James Clear</p>
+<div class="flex items-center gap-1 text-amber-500 mt-1">
+<span class="material-symbols-outlined text-xs fill-1">star</span>
+<span class="text-xs font-bold">4.9</span>
+</div>
+</div>
+</div>
+<button class="w-full py-2.5 mt-2 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white text-xs font-bold rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-primary hover:text-white hover:border-primary transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]">explore</span>
+                                Discover More Books
+                            </button>
+</div>
+<!-- Promotion Card -->
+<div class="relative bg-primary rounded-xl p-6 overflow-hidden">
+<div class="absolute -right-4 -bottom-4 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+<div class="absolute -left-2 top-0 w-16 h-16 bg-white/5 rounded-full blur-xl"></div>
+<h4 class="text-white font-bold text-lg leading-tight relative z-10">Donate a book, share a story.</h4>
+<p class="text-primary-foreground/80 text-white/80 text-xs mt-2 relative z-10 leading-relaxed">Join our winter donation drive and get 1 month of premium membership free.</p>
+<button class="mt-4 px-4 py-2 bg-white text-primary text-xs font-bold rounded-lg relative z-10">Learn More</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

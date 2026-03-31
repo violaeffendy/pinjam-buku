@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#13eca4",
+              "background-light": "#f6f8f7",
+              "background-dark": "#10221c",
+            },
+            fontFamily: {
+              "display": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        @keyframes pulse-emerald {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+        }
+        .animate-pulse-custom {
+            animation: pulse-emerald 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+<title>Staff QR Scanner Interface</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased overflow-hidden">
+<div class="relative flex h-screen w-full flex-col bg-background-light dark:bg-background-dark overflow-hidden">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-primary/20 px-10 py-3 bg-background-light dark:bg-background-dark z-20">
+<div class="flex items-center gap-4">
+<div class="size-6 text-primary">
+<span class="material-symbols-outlined text-3xl">auto_stories</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em]">LibrarySaaS</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<nav class="flex items-center gap-9">
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Inventory</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Members</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Reports</a>
+</nav>
+<div class="flex gap-2">
+<button class="flex cursor-pointer items-center justify-center rounded-xl h-10 bg-slate-100 dark:bg-primary/10 text-slate-900 dark:text-slate-100 px-3 hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex cursor-pointer items-center justify-center rounded-xl h-10 bg-slate-100 dark:bg-primary/10 text-slate-900 dark:text-slate-100 px-3 hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="bg-primary/20 border border-primary/40 aspect-square rounded-full size-10 flex items-center justify-center overflow-hidden">
+<img alt="Staff Avatar" class="w-full h-full object-cover" data-alt="Close up portrait of a library staff member" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFVd61NWNRAUBl8Enpg-dBZVLmrk3KUxhmewAFUpHGmXjH-L5jWNwcGpA-p4mHjyZRhMcE6HgAxKMk7eDUyv3Ux7ckaYpcR0uyJshzqjFdMBMTzu7R4PSpDDzfK7PtEAMkUKJwsz3V5rUZvhuEQmpfTraB6hxGD-byOZBYcVsUnJ4TOg9mn_StJexzacV78K1bnZlOuJ3IsYzNvwb1UL4yV725SjLv6Nwa5OzS1QNo6u60-FqMDAakBh7HoScGTLnzY-iqySh-bMw"/>
+</div>
+</div>
+</header>
+<main class="relative flex-1 flex flex-col items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0 bg-slate-950">
+<div class="w-full h-full opacity-60 bg-cover bg-center" data-alt="Blurred background of modern library shelves" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDYBZ48md2ehzqHBicRJ9HX6YsUlkM7CD1KwZz8M6Sinbz-rQT06aRHZ0_-0uUYoRp9FbG8AadXJX-wZ19p2vkziyEdbqAiyDL0OEDdjVAhIxcCtuphgdb0a6WZMBnJvVKp84rsmWsDF2Es9l7jgWRBqIEnlwg7V6ittKGsUkNIIAzYXmaKBhhin3kIpAPN2N1YNxz1KOm_K22PqY4UwPmMUK12AGYSVuOQD-IhcduLRQGYRD1VySU-mvODUN0rQZE_SIPShjCr97g');"></div>
+</div>
+<div class="absolute inset-0 z-10 flex items-center justify-center bg-black/40">
+<div class="relative w-72 h-72 sm:w-96 sm:h-96 border-2 border-primary rounded-xl shadow-[0_0_50px_rgba(19,236,164,0.3)]">
+<div class="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-primary -mt-1 -ml-1 rounded-tl-lg"></div>
+<div class="absolute top-0 right-0 w-8 h-8 border-t-4 border-right-4 border-primary -mt-1 -mr-1 rounded-tr-lg" style="border-right-width: 4px;"></div>
+<div class="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-primary -mb-1 -ml-1 rounded-bl-lg"></div>
+<div class="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-right-4 border-primary -mb-1 -mr-1 rounded-br-lg" style="border-right-width: 4px;"></div>
+<div class="absolute top-1/2 left-0 right-0 h-0.5 bg-primary/60 shadow-[0_0_15px_#13eca4] animate-pulse"></div>
+</div>
+</div>
+<div class="z-20 flex flex-col items-center gap-6 pointer-events-none">
+<div class="bg-background-dark/80 backdrop-blur-md px-6 py-3 rounded-full border border-primary/30 flex items-center gap-3">
+<div class="size-2 bg-primary rounded-full animate-pulse-custom"></div>
+<span class="text-primary font-bold tracking-widest uppercase text-xs">Processing Transaction...</span>
+</div>
+</div>
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex gap-4">
+<button class="flex items-center justify-center size-14 rounded-full bg-slate-900/80 backdrop-blur-md text-slate-100 hover:bg-primary hover:text-background-dark transition-all shadow-lg border border-slate-700/50">
+<span class="material-symbols-outlined text-2xl">flashlight_on</span>
+</button>
+<button class="flex items-center justify-center size-14 rounded-full bg-slate-900/80 backdrop-blur-md text-slate-100 hover:bg-red-500 hover:text-white transition-all shadow-lg border border-slate-700/50">
+<span class="material-symbols-outlined text-2xl">close</span>
+</button>
+</div>
+<div class="absolute right-8 top-1/2 -translate-y-1/2 z-40 w-80 max-h-[80%] overflow-y-auto">
+<div class="bg-background-dark/95 backdrop-blur-xl border border-primary/40 rounded-xl p-5 shadow-2xl flex flex-col gap-5">
+<div class="flex items-center gap-3 border-b border-primary/20 pb-4">
+<div class="size-10 bg-primary rounded-full flex items-center justify-center text-background-dark">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div>
+<p class="text-primary text-xs font-bold uppercase tracking-wider">Detected</p>
+<p class="text-slate-100 font-semibold">Ready for Checkout</p>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex gap-3">
+<div class="w-16 h-24 bg-slate-800 rounded-md flex-shrink-0 overflow-hidden border border-slate-700">
+<img alt="Book Cover" class="w-full h-full object-cover" data-alt="Cover of a book titled The Great Gatsby" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAybOmCE4CJAO8hBiq07TGJIkkUeuET8eQ2NSYRdWPcVtMbwPaZjzSPMUKzH4NVZ-sZxMnSNFG-pYXLfVCGm-w4biPk6mQGVCA2skYs6D0IN-ExsOp_5xdpMAEuKVEENBvk3Xn0PB_M-1RedzEtlxBCfJ22Pl1pCpHvzwd7QBbnT6ggfzcRR-g6QB-WxQZtr1DkBGxqmppy1uu7fyYV3LeizLo2oBl5hA5O_H6wLKWt-NSDUMszwkU_Q1lSzmbLR9h2GaNqGby6Tyc"/>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-slate-100 font-bold leading-tight">The Midnight Library</p>
+<p class="text-slate-400 text-sm">Matt Haig</p>
+<p class="text-primary text-xs mt-1 font-medium">ISBN: 978-0525559474</p>
+</div>
+</div>
+<div class="bg-primary/5 rounded-lg p-3 border border-primary/10">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full border border-primary/30 overflow-hidden">
+<img alt="Member Avatar" class="w-full h-full object-cover" data-alt="Profile photo of a young woman smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_BCnaIeN1OmorLL1vv_XKTjNajKRn1bQ6tyMfOwiQenC5LHsUrVx1YP1qU_cQBVHIIhIhkwXsJ8xisKp3TmLDDhvRo1YHNssf3bEzKQACkuVCN9-eMQOYP7yZOrGBBD3pFT1cVE-4c74KoL0ifmJq-XhgC4PihacQxOo7mFRGFDJTyOo0mltmngPudIVl9oSlp4g7T19qxyOzbldTzFlvn8C8SugUd0HKhcphUc44amfcNOez_z8xqew0wegC8PurgFRMgrX6m94"/>
+</div>
+<div>
+<p class="text-slate-100 text-sm font-bold">Sarah Jenkins</p>
+<p class="text-slate-400 text-xs">ID: MEM-88219</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2 pt-2">
+<button class="w-full bg-primary text-background-dark font-bold py-3 rounded-lg hover:brightness-110 transition-all flex items-center justify-center gap-2">
+<span>Process Checkout</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+<button class="w-full bg-slate-800 text-slate-300 font-medium py-3 rounded-lg hover:bg-slate-700 transition-all">
+                            Scan Another
+                        </button>
+</div>
+</div>
+</div>
+<div class="absolute left-8 bottom-8 z-30 max-w-sm">
+<div class="bg-background-dark/60 backdrop-blur-md p-4 rounded-xl border border-slate-700/50">
+<h3 class="text-slate-100 font-bold mb-1">Staff Guide</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Ensure the QR code is centered and well-lit. For rapid processing, the system will auto-detect multiple items if they are placed in sequence.</p>
+</div>
+</div>
+</main>
+</div>
+</body></html>

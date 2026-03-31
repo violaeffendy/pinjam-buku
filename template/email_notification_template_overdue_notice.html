@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1313ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101022",
+                        "warning": "#f59e0b",
+                        "danger": "#ef4444",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased font-display">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col items-center py-10 px-4">
+<!-- Email Container -->
+<div class="w-full max-w-[640px] bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-2xl">
+<!-- Header Component -->
+<header class="relative bg-danger/10 border-b border-danger/20 px-8 py-10 text-center">
+<div class="flex justify-center mb-4">
+<div class="bg-danger/20 p-3 rounded-full">
+<span class="material-symbols-outlined text-danger text-4xl">warning</span>
+</div>
+</div>
+<h1 class="text-3xl font-bold text-slate-900 dark:text-white mb-2">Overdue Notice</h1>
+<p class="text-slate-600 dark:text-slate-400 text-sm uppercase tracking-widest font-semibold">Library Management System</p>
+</header>
+<!-- Hero Section Image -->
+<div class="w-full h-48 bg-cover bg-center" data-alt="Abstract red and dark blue gradient pattern" style="background-image: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(19, 19, 236, 0.1) 100%);">
+<div class="w-full h-full flex items-center justify-center backdrop-blur-[2px]">
+<div class="text-center px-6">
+<p class="text-lg font-medium text-slate-800 dark:text-slate-200 italic">"A book is a gift you can open again and again."</p>
+</div>
+</div>
+</div>
+<!-- Main Content -->
+<div class="px-8 py-10">
+<div class="mb-8">
+<h2 class="text-xl font-bold mb-4">Urgent: Please Return Your Items</h2>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                            Hello there, our records indicate that the following items are currently past their scheduled return date. 
+                            To ensure these resources remain available for the entire community, please return or renew them at your earliest convenience.
+                        </p>
+</div>
+<!-- Table Component -->
+<div class="overflow-hidden rounded-lg border border-slate-200 dark:border-slate-800 mb-8">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50">
+<th class="px-4 py-3 text-sm font-semibold text-slate-700 dark:text-slate-300">Book Title</th>
+<th class="px-4 py-3 text-sm font-semibold text-slate-700 dark:text-slate-300">Due Date</th>
+<th class="px-4 py-3 text-sm font-semibold text-slate-700 dark:text-slate-300 text-right">Late Fee</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+<tr>
+<td class="px-4 py-4 text-sm font-medium">The Great Gatsby</td>
+<td class="px-4 py-4 text-sm text-danger font-semibold">Oct 12, 2023</td>
+<td class="px-4 py-4 text-sm text-right font-mono">$2.50</td>
+</tr>
+<tr>
+<td class="px-4 py-4 text-sm font-medium">Principles of Design</td>
+<td class="px-4 py-4 text-sm text-danger font-semibold">Oct 14, 2023</td>
+<td class="px-4 py-4 text-sm text-right font-mono">$1.50</td>
+</tr>
+</tbody>
+<tfoot>
+<tr class="bg-slate-50 dark:bg-slate-800/30">
+<td class="px-4 py-3 text-sm font-bold text-right" colspan="2">Total Balance Due:</td>
+<td class="px-4 py-3 text-sm font-bold text-right text-danger">$4.00</td>
+</tr>
+</tfoot>
+</table>
+</div>
+<!-- Call to Action -->
+<div class="flex flex-col gap-4 items-center">
+<a class="w-full max-w-sm flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold py-4 px-6 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">refresh</span>
+                            Renew or Return Instructions
+                        </a>
+<p class="text-xs text-slate-500 text-center px-10">
+                            Renewals may not be possible if the item has been reserved by another member.
+                        </p>
+</div>
+<!-- Policy Reminder -->
+<div class="mt-12 p-6 bg-slate-50 dark:bg-slate-800/40 rounded-lg border-l-4 border-primary">
+<h3 class="text-sm font-bold uppercase tracking-wider mb-2 text-primary">Library Policy Reminder</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 italic">
+                            Items kept more than 14 days past the due date may result in a temporary suspension of borrowing privileges. 
+                            We appreciate your cooperation in keeping our collection accessible to everyone.
+                        </p>
+</div>
+</div>
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-slate-950 px-8 py-8 border-t border-slate-200 dark:border-slate-800 text-center">
+<div class="flex justify-center gap-6 mb-4">
+<a class="text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+</a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+</a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">mail</span>
+</a>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-600">
+                        © 2023 Library Management System. 123 Learning Way, Knowledge City.<br/>
+                        You are receiving this automated notice because of your active membership.
+                    </p>
+<div class="mt-4">
+<a class="text-xs text-primary underline" href="#">Manage Notification Preferences</a>
+</div>
+</footer>
+</div>
+<!-- Quick Link / Back to Dashboard -->
+<div class="mt-8 text-center">
+<a class="text-slate-500 hover:text-primary text-sm flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+                    Back to Member Dashboard
+                </a>
+</div>
+</div>
+</div>
+</body></html>

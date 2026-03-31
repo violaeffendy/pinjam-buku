@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Staff Transaction Management - LibManager SaaS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1313ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101022",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Header / Navbar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 px-10 py-3 bg-white dark:bg-slate-900">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary">menu_book</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em]">LibManager</h2>
+</div>
+<label class="flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full">
+<div class="text-slate-500 flex border-none bg-slate-100 dark:bg-slate-800 items-center justify-center pl-4 rounded-l-xl">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-slate-900 dark:text-slate-100 focus:outline-0 focus:ring-0 border-none bg-slate-100 dark:bg-slate-800 placeholder:text-slate-500 px-4 rounded-l-none pl-2 text-sm font-normal" placeholder="Search transactions..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<nav class="flex items-center gap-6">
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal" href="#">Dashboard</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal" href="#">Inventory</a>
+<a class="text-primary text-sm font-semibold leading-normal" href="#">Transactions</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal" href="#">Members</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal" href="#">Reports</a>
+</nav>
+<div class="flex gap-2">
+<button class="flex cursor-pointer items-center justify-center rounded-xl size-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex cursor-pointer items-center justify-center rounded-xl size-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="Staff user profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCbTBkK3Gb80hNgq487fG0iwen6dW43qVET_k-SexaDgO9rpC0XpUE5IVDvUf-VCVIlG868RZDEEWzFAf1TYQPV_X71H5bAY14I5O9JKtjl0v-rUD1uHKYb8UgJ4cUiV7SqzX1qi-b-0IwQLP4goZlI43oc_jpQzr9jmpQCw6gXW59X5buv7ERMneWMAv1I0-X3_c232d7NeLfigUmHgKIKqcbpkvUpR47F-_ZadHka99E06Dn6fAU4-Ge0kiPih2fbPYhRmjofecY");'></div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex flex-1 flex-col px-4 md:px-10 lg:px-40 py-8">
+<!-- Page Title Section -->
+<div class="flex flex-wrap justify-between items-end gap-4 mb-8">
+<div class="flex flex-col gap-1">
+<h1 class="text-slate-900 dark:text-slate-100 text-3xl font-black leading-tight tracking-tight">Staff Transaction Management</h1>
+<p class="text-slate-500 dark:text-slate-400 text-base font-normal">Process book loans and verify returns in real-time.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center justify-center gap-2 rounded-xl h-12 px-6 bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-slate-100 text-sm font-bold transition-all hover:bg-slate-300 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined">check_circle</span>
+<span>Verify Return</span>
+</button>
+<button class="flex items-center justify-center gap-2 rounded-xl h-12 px-6 bg-primary text-white text-sm font-bold transition-all hover:opacity-90 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+<span>Scan QR Code</span>
+</button>
+</div>
+</div>
+<!-- Filters and Quick Stats -->
+<div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+<div class="flex gap-2 overflow-x-auto pb-2 sm:pb-0">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary text-white px-4 text-sm font-medium">
+                            All Transactions
+                        </button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-4 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">
+                            Borrowed
+                            <span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-4 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">
+                            Returned
+                            <span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-4 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">
+                            Late
+                            <span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+<div class="text-sm text-slate-500 dark:text-slate-400 font-medium bg-white dark:bg-slate-800 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700">
+                        Total Records: <span class="text-primary font-bold">1,248</span>
+</div>
+</div>
+<!-- Transactions Table Container -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50">
+<th class="px-6 py-4 text-slate-900 dark:text-slate-100 text-sm font-semibold border-b border-slate-200 dark:border-slate-800">Member Name</th>
+<th class="px-6 py-4 text-slate-900 dark:text-slate-100 text-sm font-semibold border-b border-slate-200 dark:border-slate-800">Book Title</th>
+<th class="px-6 py-4 text-slate-900 dark:text-slate-100 text-sm font-semibold border-b border-slate-200 dark:border-slate-800">Loan Date</th>
+<th class="px-6 py-4 text-slate-900 dark:text-slate-100 text-sm font-semibold border-b border-slate-200 dark:border-slate-800">Due Date</th>
+<th class="px-6 py-4 text-slate-900 dark:text-slate-100 text-sm font-semibold border-b border-slate-200 dark:border-slate-800">Status</th>
+<th class="px-6 py-4 text-slate-900 dark:text-slate-100 text-sm font-semibold border-b border-slate-200 dark:border-slate-800 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">AJ</div>
+<span class="text-sm font-medium text-slate-900 dark:text-slate-100">Alice Johnson</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400 italic">The Great Gatsby</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Oct 01, 2023</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Oct 15, 2023</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">
+                                            Borrowed
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:underline text-sm font-bold">Edit</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-400 flex items-center justify-center font-bold text-xs">BS</div>
+<span class="text-sm font-medium text-slate-900 dark:text-slate-100">Bob Smith</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400 italic">1984</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Sep 20, 2023</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Oct 04, 2023</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300">
+                                            Late
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="bg-primary/10 text-primary hover:bg-primary hover:text-white px-4 py-1.5 rounded-lg text-xs font-bold transition-all">Verify</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">CB</div>
+<span class="text-sm font-medium text-slate-900 dark:text-slate-100">Charlie Brown</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400 italic">Moby Dick</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Oct 05, 2023</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Oct 19, 2023</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300">
+                                            Returned
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 text-sm font-bold">View</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">DP</div>
+<span class="text-sm font-medium text-slate-900 dark:text-slate-100">Diana Prince</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400 italic">Ulysses</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Oct 10, 2023</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Oct 24, 2023</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">
+                                            Borrowed
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:underline text-sm font-bold">Edit</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-400 flex items-center justify-center font-bold text-xs">EK</div>
+<span class="text-sm font-medium text-slate-900 dark:text-slate-100">Edward King</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400 italic">The Hobbit</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Sep 28, 2023</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Oct 12, 2023</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300">
+                                            Late
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="bg-primary/10 text-primary hover:bg-primary hover:text-white px-4 py-1.5 rounded-lg text-xs font-bold transition-all">Verify</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="px-6 py-4 flex items-center justify-between border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900">
+<p class="text-sm text-slate-500 dark:text-slate-400">Showing 1 to 5 of 1,248 entries</p>
+<div class="flex gap-2">
+<button class="px-3 py-1 rounded border border-slate-300 dark:border-slate-700 text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-800">Previous</button>
+<button class="px-3 py-1 rounded bg-primary text-white text-sm font-medium">1</button>
+<button class="px-3 py-1 rounded border border-slate-300 dark:border-slate-700 text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-800">2</button>
+<button class="px-3 py-1 rounded border border-slate-300 dark:border-slate-700 text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-800">3</button>
+<button class="px-3 py-1 rounded border border-slate-300 dark:border-slate-700 text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-800">Next</button>
+</div>
+</div>
+</div>
+<!-- Operations Card (Small Info Section) -->
+<div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 flex items-start gap-4">
+<div class="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+<span class="material-symbols-outlined text-blue-600 dark:text-blue-400">sync_alt</span>
+</div>
+<div>
+<h3 class="text-sm font-bold text-slate-900 dark:text-slate-100">Daily Volume</h3>
+<p class="text-2xl font-black text-primary">142</p>
+<p class="text-xs text-slate-500 mt-1">+12% from yesterday</p>
+</div>
+</div>
+<div class="p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 flex items-start gap-4">
+<div class="p-3 bg-red-100 dark:bg-red-900/30 rounded-lg">
+<span class="material-symbols-outlined text-red-600 dark:text-red-400">priority_high</span>
+</div>
+<div>
+<h3 class="text-sm font-bold text-slate-900 dark:text-slate-100">Pending Late Returns</h3>
+<p class="text-2xl font-black text-red-600">28</p>
+<p class="text-xs text-slate-500 mt-1">Requiring immediate follow-up</p>
+</div>
+</div>
+<div class="p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 flex items-start gap-4">
+<div class="p-3 bg-green-100 dark:bg-green-900/30 rounded-lg">
+<span class="material-symbols-outlined text-green-600 dark:text-green-400">task_alt</span>
+</div>
+<div>
+<h3 class="text-sm font-bold text-slate-900 dark:text-slate-100">Verified Returns</h3>
+<p class="text-2xl font-black text-green-600">89</p>
+<p class="text-xs text-slate-500 mt-1">Successfully processed today</p>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

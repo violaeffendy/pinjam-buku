@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin System &amp; Notification Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#5b13ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#161022",
+                        "success-emerald": "#10b981",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Nav Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-3xl">auto_stories</span>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight">Library Admin</h2>
+</div>
+<nav class="flex items-center gap-6">
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Dashboard</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Catalog</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Members</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary pb-1" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<label class="relative flex min-w-40 max-w-64">
+<div class="flex w-full items-center rounded-xl bg-slate-100 dark:bg-slate-800 px-3 py-2">
+<span class="material-symbols-outlined text-slate-500 text-xl">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-sm placeholder:text-slate-500" placeholder="Search settings..." type="text"/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-xl size-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-xl size-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+<div class="size-10 rounded-full bg-primary/10 border-2 border-primary/20 flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="size-full object-cover" data-alt="Admin user profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEanYHquWOYxB_hqqQYdTK1DR5_6Gp9gD9V2LA9i7Sp6AspZWtoLEw0G51KArrZS-wAtPkSB3xYjsvsC6qv3f6fw9sCzF_mD3RtFA7jfK3rlR5F8wl9e3Xe2XmR2N6Vvsgd8GJtKzShXifqWdBX8fqRGrYBc-z2Knq-L2uz3Ve0fRup8OhNzRtMgO-jzIC7knxz7PW61TgV0p30hEWvlxCdWw2z2b3bLMvJLCueM1EIOvuHo1HG6WfZqfflQWWoUMUTH5WkGoL-k0"/>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-10 py-10">
+<div class="mb-8">
+<h1 class="text-3xl font-black text-slate-900 dark:text-white">System Settings</h1>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Configure your library's core platform preferences and notification rules.</p>
+</div>
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Sidebar-within-content -->
+<aside class="w-full lg:w-64 shrink-0">
+<div class="flex flex-col gap-1.5 sticky top-24">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all font-medium" href="#">
+<span class="material-symbols-outlined">settings</span>
+                        General
+                    </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white shadow-lg shadow-primary/20 transition-all font-medium" href="#">
+<span class="material-symbols-outlined">notifications_active</span>
+                        Notifications
+                    </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all font-medium" href="#">
+<span class="material-symbols-outlined">security</span>
+                        Security
+                    </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all font-medium" href="#">
+<span class="material-symbols-outlined">extension</span>
+                        Integration
+                    </a>
+<hr class="my-4 border-slate-200 dark:border-slate-800"/>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 transition-all font-medium" href="#">
+<span class="material-symbols-outlined">delete</span>
+                        Clear Data
+                    </a>
+</div>
+</aside>
+<!-- Main Settings Content -->
+<div class="flex-1 space-y-8">
+<!-- General Settings Card -->
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-md border border-slate-200 dark:border-slate-800 p-8">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">settings_applications</span>
+<h2 class="text-xl font-bold">General Information</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Site Name</label>
+<input class="w-full rounded-lg border-slate-300 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-primary" type="text" value="Central City Public Library"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Timezone</label>
+<select class="w-full rounded-lg border-slate-300 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-primary">
+<option>(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+<option>(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+<option>(GMT+00:00) London</option>
+</select>
+</div>
+<div class="md:col-span-2 space-y-4">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 block">Library Logo</label>
+<div class="flex items-center gap-6 p-4 rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50">
+<div class="size-20 rounded-lg bg-white shadow-sm flex items-center justify-center text-slate-400 overflow-hidden border border-slate-200">
+<span class="material-symbols-outlined text-4xl">image</span>
+</div>
+<div>
+<button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-primary/90 transition-colors">Upload New Logo</button>
+<p class="text-xs text-slate-500 mt-2">Recommended size: 200x200px. JPG, PNG or SVG.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Notifications Settings Card -->
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-md border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-8 pb-0">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary">mail</span>
+<h2 class="text-xl font-bold">Notification Rules</h2>
+</div>
+<p class="text-slate-500 text-sm mb-6">Manage how you want to be alerted for important events.</p>
+</div>
+<div class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Email Section -->
+<div class="px-8 py-6 bg-slate-50/50 dark:bg-slate-800/20">
+<h3 class="text-xs font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-4">Email Notifications</h3>
+<div class="space-y-4">
+<!-- Notification Item 1 -->
+<div class="flex items-center justify-between group">
+<div class="flex items-start gap-4">
+<div class="mt-1 size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">shopping_cart_checkout</span>
+</div>
+<div>
+<p class="font-semibold group-hover:text-primary transition-colors">New Loan Alert</p>
+<p class="text-sm text-slate-500">Send an email summary whenever a book is checked out.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none dark:bg-slate-700 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-success-emerald"></div>
+</label>
+</div>
+<!-- Notification Item 2 -->
+<div class="flex items-center justify-between group">
+<div class="flex items-start gap-4">
+<div class="mt-1 size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">history</span>
+</div>
+<div>
+<p class="font-semibold group-hover:text-primary transition-colors">Overdue Reminders</p>
+<p class="text-sm text-slate-500">Daily email notifications for all currently overdue items.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none dark:bg-slate-700 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-success-emerald"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Push Notifications Section -->
+<div class="px-8 py-6">
+<h3 class="text-xs font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-4">Push Notifications</h3>
+<div class="space-y-4">
+<!-- Notification Item 3 -->
+<div class="flex items-center justify-between group">
+<div class="flex items-start gap-4">
+<div class="mt-1 size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">person_add</span>
+</div>
+<div>
+<p class="font-semibold group-hover:text-primary transition-colors">New Member Signup</p>
+<p class="text-sm text-slate-500">Real-time alerts for new library membership registrations.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none dark:bg-slate-700 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-success-emerald"></div>
+</label>
+</div>
+<!-- Notification Item 4 -->
+<div class="flex items-center justify-between group">
+<div class="flex items-start gap-4">
+<div class="mt-1 size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">inventory_2</span>
+</div>
+<div>
+<p class="font-semibold group-hover:text-primary transition-colors">Low Stock Warning</p>
+<p class="text-sm text-slate-500">Notify when popular books reach a threshold of 1 copy left.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none dark:bg-slate-700 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-success-emerald"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+<div class="p-8 bg-slate-50 dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 flex justify-end gap-4">
+<button class="px-6 py-2.5 rounded-lg text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">Cancel</button>
+<button class="px-6 py-2.5 rounded-lg text-sm font-bold bg-primary text-white shadow-lg shadow-primary/25 hover:scale-[1.02] active:scale-100 transition-all">Save Changes</button>
+</div>
+</section>
+<!-- Integration Info Card (Preview) -->
+<section class="bg-primary/5 rounded-xl border border-primary/20 p-6 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-xl bg-primary text-white flex items-center justify-center">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white">Pro Tip: API Access</p>
+<p class="text-sm text-slate-600 dark:text-slate-400">You can also receive notifications via Webhooks or Slack. Visit Integrations to set it up.</p>
+</div>
+</div>
+<button class="text-primary font-bold text-sm hover:underline">View Integrations →</button>
+</section>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="mt-auto border-t border-slate-200 dark:border-slate-800 py-8 px-10 text-center text-sm text-slate-500 dark:text-slate-400">
+<p>© 2024 Library Admin System. v2.4.1 (Stable)</p>
+</footer>
+</div>
+</body></html>

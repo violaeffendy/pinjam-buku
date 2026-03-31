@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1313ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101022",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Digital Loan Receipt View</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 px-10 py-3 bg-white dark:bg-slate-900/50">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary">auto_stories</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Lumina Library</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="flex items-center gap-9">
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Dashboard</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Catalog</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Loans</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Members</a>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 px-3 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">
+<span class="material-symbols-outlined text-[20px]">print</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 px-3 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 bg-primary text-white px-4 text-sm font-bold gap-2 shadow-lg shadow-primary/20 hover:brightness-110 transition-all">
+<span class="material-symbols-outlined text-[20px]">share</span>
+                            Share
+                        </button>
+</div>
+</div>
+</header>
+<main class="flex-1 flex justify-center py-10 px-4">
+<div class="max-w-[850px] w-full bg-white dark:bg-slate-900 shadow-2xl rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800">
+<!-- Receipt Header Gradient -->
+<div class="h-32 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent relative p-8 flex items-end">
+<div class="absolute top-8 right-8 text-right">
+<span class="text-primary font-bold tracking-widest text-xs uppercase opacity-60">Digital Official Receipt</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-white text-3xl font-black tracking-tight">Loan Confirmation</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Central Public Library - Main Branch</p>
+</div>
+</div>
+<!-- Transaction Identity -->
+<div class="p-8 grid grid-cols-1 md:grid-cols-3 gap-6 border-b border-slate-100 dark:border-slate-800">
+<div class="flex flex-col gap-1">
+<span class="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">Transaction ID</span>
+<span class="text-slate-900 dark:text-white font-mono font-semibold">#LIB-982341-2023</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">Issue Date</span>
+<span class="text-slate-900 dark:text-white font-semibold">October 24, 2023</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">Member Name</span>
+<span class="text-slate-900 dark:text-white font-semibold">Alex Johnson</span>
+</div>
+</div>
+<!-- Loan Summary Section -->
+<div class="p-8">
+<h2 class="text-slate-900 dark:text-white text-xl font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">list_alt</span>
+                            Loan Summary
+                        </h2>
+<div class="overflow-hidden rounded-lg border border-slate-100 dark:border-slate-800">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50">
+<th class="px-6 py-4 text-xs font-bold text-slate-400 dark:text-slate-500 uppercase">Book Title &amp; Author</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 dark:text-slate-500 uppercase text-center">ISBN</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 dark:text-slate-500 uppercase text-right">Due Date</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-bold text-slate-800 dark:text-slate-200">The Midnight Library</span>
+<span class="text-xs text-slate-500">Matt Haig</span>
+</div>
+</td>
+<td class="px-6 py-5 text-center text-sm text-slate-600 dark:text-slate-400">978-0525559474</td>
+<td class="px-6 py-5 text-right">
+<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full">Nov 07, 2023</span>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-bold text-slate-800 dark:text-slate-200">Atomic Habits</span>
+<span class="text-xs text-slate-500">James Clear</span>
+</div>
+</td>
+<td class="px-6 py-5 text-center text-sm text-slate-600 dark:text-slate-400">978-0735211292</td>
+<td class="px-6 py-5 text-right">
+<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full">Nov 07, 2023</span>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="font-bold text-slate-800 dark:text-slate-200">Project Hail Mary</span>
+<span class="text-xs text-slate-500">Andy Weir</span>
+</div>
+</td>
+<td class="px-6 py-5 text-center text-sm text-slate-600 dark:text-slate-400">978-0593135204</td>
+<td class="px-6 py-5 text-right">
+<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full">Nov 07, 2023</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Footer Verification & T&C -->
+<div class="p-8 bg-slate-50 dark:bg-slate-800/30 flex flex-col md:flex-row gap-10 items-center border-t border-slate-100 dark:border-slate-800">
+<div class="flex-1">
+<h3 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase mb-3 tracking-widest">Terms &amp; Conditions</h3>
+<ul class="text-[12px] text-slate-500 dark:text-slate-400 space-y-2 list-disc pl-4">
+<li>Late returns are subject to a fee of $0.50 per day per book.</li>
+<li>Books must be returned in the same condition they were received.</li>
+<li>Renewals can be processed online before the actual due date.</li>
+<li>Lost or damaged items will require replacement cost plus processing fees.</li>
+</ul>
+</div>
+<div class="flex flex-col items-center gap-2 shrink-0">
+<div class="p-4 bg-white dark:bg-slate-700 rounded-xl shadow-inner border border-slate-200 dark:border-slate-600">
+<img alt="Receipt Verification QR Code" class="size-24 opacity-80 dark:invert" data-alt="Digital receipt verification QR code for library" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZTT2bygHIPkQe7XoFarW2qyl-1fvA3hgJYFk_6jNp6Ybrp4ON3MIOSEyC-fsrWwv51WLfvXy63fkCepN97ZPChe0NMxQD3Bh8U35Gqj8gndc-X1Tj6MqE7rUBDT2vS3hmxPSFwxvqazYF3GO6_I4fmIgq6FNVB9_Xre7aJ6iSq4bhBI1TarjQ7O4sYi7jt3ZfjHOc2KyfYvAQ3O4He_q1GVoIQNWXWkdiW6kWulhgx-HgBVEWxgUWWUlxJeeUewyelrPnrkmVxho"/>
+</div>
+<span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase">Scan to Verify</span>
+</div>
+</div>
+<!-- Official Footer -->
+<div class="p-6 text-center border-t border-slate-100 dark:border-slate-800">
+<p class="text-[11px] text-slate-400 dark:text-slate-500">
+                            Lumina Library Management System • Lumina HQ, 123 Knowledge Way • (555) 012-3456
+                        </p>
+</div>
+</div>
+</main>
+<!-- Bottom Action Bar (Floating for Print/Export context) -->
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 flex gap-4 p-4 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md rounded-full shadow-2xl border border-slate-200 dark:border-slate-800">
+<button class="flex items-center gap-2 px-6 py-2.5 bg-primary text-white rounded-full font-bold text-sm hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">file_download</span>
+                    Export PDF
+                </button>
+<button class="flex items-center gap-2 px-6 py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-full font-bold text-sm hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+                    Email Receipt
+                </button>
+</div>
+</div>
+</div>
+</body></html>

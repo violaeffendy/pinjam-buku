@@ -1,0 +1,373 @@
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Member Book Search Catalog</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1313ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101022",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 lg:px-20 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8 bg-primary/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">library_books</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em]">LibFlow</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<nav class="hidden md:flex items-center gap-9">
+<a class="text-primary text-sm font-semibold leading-normal" href="#">Catalog</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">My Borrows</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Reservations</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">History</a>
+</nav>
+<div class="flex gap-2">
+<button class="flex cursor-pointer items-center justify-center rounded-xl h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="flex cursor-pointer items-center justify-center rounded-xl h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined text-[20px]">account_circle</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="User profile avatar of a smiling man" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD0X3CWBwfp3C7mRlPCVVikMWTvUQHN87nyRQF8WJfRRea4rFHfSEyeMcOaLyl7-442lPyW39Qu90KGrA_IyzyORC00f8iBpn31hnLmLM16loS3CFSKbA3Xyi9RmSugCewL60wKnCEarK9USn53Cp2h3Stz6Df9C_KUnKHXwX1O1MUcXGZ-zirIQcJFKyT-bTryeMokKNU7_bSSJZiK2AAMJNwkXsV4xrEy3aVYCfn-O2J39DpM5OOb9mtkovFOLk4i1h4WTgjjVxw");'></div>
+</div>
+</header>
+<main class="flex-1 max-w-[1440px] mx-auto w-full px-6 lg:px-20 py-8">
+<!-- Hero Section & Search -->
+<div class="flex flex-col gap-6 mb-10">
+<div class="flex flex-col gap-2">
+<h1 class="text-slate-900 dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Book Discovery</h1>
+<p class="text-slate-500 dark:text-slate-400 text-lg font-normal">Find your next favorite story among 50,000+ available titles.</p>
+</div>
+<div class="w-full">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-slate-400">search</span>
+<input class="w-full h-14 pl-12 pr-4 rounded-xl border-none bg-white dark:bg-slate-900 shadow-sm ring-1 ring-slate-200 dark:ring-slate-800 focus:ring-2 focus:ring-primary text-slate-900 dark:text-white placeholder:text-slate-400 text-base" placeholder="Search by title, author, genre or ISBN..." type="text"/>
+</div>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Sidebar Filters -->
+<aside class="w-full lg:w-64 flex flex-col gap-8 shrink-0">
+<div>
+<h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4">Categories</h3>
+<div class="flex flex-col gap-1">
+<button class="flex items-center justify-between px-3 py-2 rounded-lg bg-primary text-white font-medium">
+<span>All Books</span>
+<span class="text-xs bg-white/20 px-2 py-0.5 rounded-full">1,240</span>
+</button>
+<button class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span>Fiction</span>
+<span class="text-xs text-slate-400">452</span>
+</button>
+<button class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span>Science &amp; Tech</span>
+<span class="text-xs text-slate-400">128</span>
+</button>
+<button class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span>History</span>
+<span class="text-xs text-slate-400">84</span>
+</button>
+<button class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span>Biography</span>
+<span class="text-xs text-slate-400">56</span>
+</button>
+</div>
+</div>
+<div>
+<h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4">Availability</h3>
+<div class="flex flex-col gap-3">
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="rounded text-primary focus:ring-primary bg-transparent border-slate-300 dark:border-slate-700" type="checkbox"/>
+<span class="text-slate-700 dark:text-slate-300 text-sm">Available Now</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input class="rounded text-primary focus:ring-primary bg-transparent border-slate-300 dark:border-slate-700" type="checkbox"/>
+<span class="text-slate-700 dark:text-slate-300 text-sm">e-Book only</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input class="rounded text-primary focus:ring-primary bg-transparent border-slate-300 dark:border-slate-700" type="checkbox"/>
+<span class="text-slate-700 dark:text-slate-300 text-sm">Coming Soon</span>
+</label>
+</div>
+</div>
+<div class="pt-6 border-t border-slate-200 dark:border-slate-800">
+<div class="bg-primary/5 dark:bg-primary/10 p-4 rounded-xl">
+<span class="material-symbols-outlined text-primary mb-2">auto_awesome</span>
+<h4 class="font-bold text-slate-900 dark:text-white text-sm mb-1">Personalized Recommendations</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Based on your reading history, we think you'll love these new arrivals.</p>
+<button class="mt-3 text-primary text-xs font-bold hover:underline">View Picks</button>
+</div>
+</div>
+</aside>
+<!-- Results Grid -->
+<div class="flex-1">
+<div class="flex items-center justify-between mb-6">
+<p class="text-slate-500 dark:text-slate-400 text-sm">Showing <span class="text-slate-900 dark:text-white font-bold">24</span> results of 1,240</p>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">
+<span>Newest</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Book Card 1 -->
+<div class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group flex flex-col h-full border border-slate-100 dark:border-slate-800">
+<div class="relative aspect-[3/4] overflow-hidden bg-slate-100 dark:bg-slate-800">
+<div class="absolute inset-0 bg-cover bg-center transition-transform group-hover:scale-105" data-alt="Cover of book with minimalist blue design" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCcqg-EsNupdhZhISa8eHsOaEJ3MiMryPDiBBD6RXBtYCeYBWTfBZqVTWz0IlOwprbaTbOaqzRIHBFt-OAHtMoSjPNbZ0HMMOJZ4iwMAMFyY2mj6LPndWeJkkoKI8pa4uMlJqNAvd_gzADQGnDzrwSKTDF8C7iMOAnADCuBzw308kMqf-sJ2PwNfuq_-yrGGeDUHmZH3dbDY9V0KjLE3vDavIBDuy0ZO7f0P9Daub3aaqbEMmYzIrJ6tYCceaVS-z8s5uf3vclDayM");'></div>
+<div class="absolute top-3 right-3">
+<span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded uppercase">Available</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="flex-1">
+<h3 class="text-slate-900 dark:text-white font-bold text-lg leading-tight mb-1">The Art of Focus</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-3">Sarah J. Miller</p>
+<div class="flex items-center gap-1 text-amber-400 mb-4">
+<span class="material-symbols-outlined text-sm fill-1">star</span>
+<span class="material-symbols-outlined text-sm fill-1">star</span>
+<span class="material-symbols-outlined text-sm fill-1">star</span>
+<span class="material-symbols-outlined text-sm fill-1">star</span>
+<span class="material-symbols-outlined text-sm">star_half</span>
+<span class="text-slate-400 text-xs ml-1">(124)</span>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-primary text-white text-sm font-bold py-2 rounded-lg hover:bg-primary/90 transition-colors">Details</button>
+<button class="px-3 py-2 rounded-lg border border-primary/20 text-primary hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Book Card 2 -->
+<div class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group flex flex-col h-full border border-slate-100 dark:border-slate-800">
+<div class="relative aspect-[3/4] overflow-hidden bg-slate-100 dark:bg-slate-800">
+<div class="absolute inset-0 bg-cover bg-center transition-transform group-hover:scale-105" data-alt="Cover of a vintage looking classic novel" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBiPP8U_QsQ1hrqsVfHbsjQKb7Qqhe9EbxlwIOprJdXNssnDIO0WsYTwWyYNbpyqq3jjAgNoVPSrDySWm-3NdfV4z9Rtc_eKb7sIkxtPatRbeM9x1sumL_PnaqEnGnyJH2FvUVRBF95obEaxfjFyTXJkYyXTVqv0qFP5NIgjq_e6Y2nFQZyJ-u1hMqp9fF6OvFvdDe_iUQn2b_0MReEw1uj_NqwlcWZkU-Lc9Bmv4WIDMSndIyIB9_RAlzr6dgM20TgjpcNgQUSrhc");'></div>
+<div class="absolute top-3 right-3">
+<span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-1 rounded uppercase">e-Book</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="flex-1">
+<h3 class="text-slate-900 dark:text-white font-bold text-lg leading-tight mb-1">Echoes of Time</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-3">Alexander Thorne</p>
+<div class="flex items-center gap-1 text-amber-400 mb-4">
+<span class="material-symbols-outlined text-sm fill-1">star</span>
+<span class="material-symbols-outlined text-sm fill-1">star</span>
+<span class="material-symbols-outlined text-sm fill-1">star</span>
+<span class="material-symbols-outlined text-sm fill-1">star</span>
+<span class="material-symbols-outlined text-sm fill-1">star</span>
+<span class="text-slate-400 text-xs ml-1">(89)</span>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-primary text-white text-sm font-bold py-2 rounded-lg hover:bg-primary/90 transition-colors">Details</button>
+<button class="px-3 py-2 rounded-lg border border-primary/20 text-primary hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Book Card 3 -->
+<div class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group flex flex-col h-full border border-slate-100 dark:border-slate-800">
+<div class="relative aspect-[3/4] overflow-hidden bg-slate-100 dark:bg-slate-800">
+<div class="absolute inset-0 bg-cover bg-center transition-transform group-hover:scale-105" data-alt="Cover of book with red and white geometric patterns" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuALaZh2cyhZ4J0YdEs6hMshqF3uJBGNrcIfA-AYBFwGz-mqyIT4D7ByKAF1JZQGH12nipPWYwitEu1e7xzCufdlQMvGQSy2VhqhRJU35_EtZS8l1h85IKNQtCNzLV6Jj-bZn842S3kjAYo7OSQ9nImMgJpALg0ysKgH5-9AkF8hVu7IFja3BFAxLs5vfm3QyTkbPIkt-_tVzI0Jv5tPnzsf50qRKkrRMYYQQxBBcehaCYjOUfIL-LVjRVCsVFSPo_sYOqwaqdRTL8s");'></div>
+<div class="absolute top-3 right-3">
+<span class="bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-1 rounded uppercase">On Loan</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="flex-1">
+<h3 class="text-slate-900 dark:text-white font-bold text-lg leading-tight mb-1">Modern Architecture</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-3">Elena Rossi</p>
+<div class="flex items-center gap-1 text-amber-400 mb-4">
+<span class="material-symbols-outlined text-sm fill-1">star</span>
+<span class="material-symbols-outlined text-sm fill-1">star</span>
+<span class="material-symbols-outlined text-sm fill-1">star</span>
+<span class="material-symbols-outlined text-sm fill-1">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="text-slate-400 text-xs ml-1">(210)</span>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-primary text-white text-sm font-bold py-2 rounded-lg hover:bg-primary/90 transition-colors">Details</button>
+<button class="px-3 py-2 rounded-lg border border-primary/20 text-primary hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Book Card 4 -->
+<div class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group flex flex-col h-full border border-slate-100 dark:border-slate-800">
+<div class="relative aspect-[3/4] overflow-hidden bg-slate-100 dark:bg-slate-800">
+<div class="absolute inset-0 bg-cover bg-center transition-transform group-hover:scale-105" data-alt="Scientific journal book cover with technical illustration" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCn59Glvp_rujgQwPwPHqq0LJrs6koH5OfQoRFhJ8WmtDG9MS00P5tZPKDBqj-ph-mRro7o-UZ3eNo3_soJv3uyBvqN7ZVWyPd2Blfl1Ap-EoIZns_wAUQrdZi8KdEO-v4ZKIRJ3QvhGlE84i_XBcnkkJEwWiguNoR7PgevQd5RFakeq3UkVvxXdqDSinqWOfznfA0ZhdP_7Xi3TjWBga5C9hIwpyu_vFMXK7m54zIpvvnEcILvne08LMN0jqiBrryE3BvZ1DXEkRo");'></div>
+<div class="absolute top-3 right-3">
+<span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded uppercase">Available</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="flex-1">
+<h3 class="text-slate-900 dark:text-white font-bold text-lg leading-tight mb-1">Quantum Theory</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-3">Prof. David Chen</p>
+<div class="flex items-center gap-1 text-amber-400 mb-4">
+<span class="material-symbols-outlined text-sm fill-1">star</span>
+<span class="material-symbols-outlined text-sm fill-1">star</span>
+<span class="material-symbols-outlined text-sm fill-1">star</span>
+<span class="material-symbols-outlined text-sm fill-1">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="text-slate-400 text-xs ml-1">(45)</span>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-primary text-white text-sm font-bold py-2 rounded-lg hover:bg-primary/90 transition-colors">Details</button>
+<button class="px-3 py-2 rounded-lg border border-primary/20 text-primary hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Book Card 5 -->
+<div class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group flex flex-col h-full border border-slate-100 dark:border-slate-800">
+<div class="relative aspect-[3/4] overflow-hidden bg-slate-100 dark:bg-slate-800">
+<div class="absolute inset-0 bg-cover bg-center transition-transform group-hover:scale-105" data-alt="Cover of book with dark artistic illustration" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBlSRL10KAnTAGOTTRdjGM0bN0rqIQ4sRG4xUeyfSbww_VpwkJ4c8g3uB8RhtTE_AnvS5oNjgn91as9vWod8-E3Bu6MgWOp-hTCZjR4hOP0rZLMVratIB6K0qTy6vDAJQpnXkxKZLrSpBk18-GVrc039pIbuRq1l_aNnx05aGvqoy9_5GFGoY19KHhx1OvKuMuxVgmo75m8UZzemSmQV0sj1LNJZor3IjcQggCzZ8xbj66tgkkBeVJys5jCtLt3fJqufGQJRfjXEjM");'></div>
+<div class="absolute top-3 right-3">
+<span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded uppercase">Available</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="flex-1">
+<h3 class="text-slate-900 dark:text-white font-bold text-lg leading-tight mb-1">Beyond the Horizon</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-3">Lucas Montgomery</p>
+<div class="flex items-center gap-1 text-amber-400 mb-4">
+<span class="material-symbols-outlined text-sm fill-1">star</span>
+<span class="material-symbols-outlined text-sm fill-1">star</span>
+<span class="material-symbols-outlined text-sm fill-1">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="text-slate-400 text-xs ml-1">(72)</span>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-primary text-white text-sm font-bold py-2 rounded-lg hover:bg-primary/90 transition-colors">Details</button>
+<button class="px-3 py-2 rounded-lg border border-primary/20 text-primary hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Book Card 6 -->
+<div class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group flex flex-col h-full border border-slate-100 dark:border-slate-800">
+<div class="relative aspect-[3/4] overflow-hidden bg-slate-100 dark:bg-slate-800">
+<div class="absolute inset-0 bg-cover bg-center transition-transform group-hover:scale-105" data-alt="Cover of a bright yellow book about design thinking" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB8lmCK1LfIc1pN1yryH7qUEYEH9vV-_xnMtqgZOtvgrYE5xM-lanKnWcrVleVqK6hKdr9lvBEUVI3fhsF5Ar2M6UsmTSqotyRheP37wmQzYd2iR1reKqPooOUO67HieWU-utR51RCw5sNtVdZZI62ysjqRVCVwvL1ECQLBHPjg5Qk30Nfy9xDZZIjqO4rdxMas5xCvk6a2dOSTz9UKC6dqrTu4Lc9bQ234mBLJJJI7A4RzSsIUtbE0jDA7x4cDo8tzZ5gDUOdMGfY");'></div>
+<div class="absolute top-3 right-3">
+<span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded uppercase">Available</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="flex-1">
+<h3 class="text-slate-900 dark:text-white font-bold text-lg leading-tight mb-1">Design Systems</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-3">Mark Wilson</p>
+<div class="flex items-center gap-1 text-amber-400 mb-4">
+<span class="material-symbols-outlined text-sm fill-1">star</span>
+<span class="material-symbols-outlined text-sm fill-1">star</span>
+<span class="material-symbols-outlined text-sm fill-1">star</span>
+<span class="material-symbols-outlined text-sm fill-1">star</span>
+<span class="material-symbols-outlined text-sm fill-1">star</span>
+<span class="text-slate-400 text-xs ml-1">(156)</span>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-primary text-white text-sm font-bold py-2 rounded-lg hover:bg-primary/90 transition-colors">Details</button>
+<button class="px-3 py-2 rounded-lg border border-primary/20 text-primary hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="flex items-center justify-center mt-12 gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-800 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary text-white font-bold">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-transparent text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-transparent text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">3</button>
+<span class="text-slate-400">...</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-transparent text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">12</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-800 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<!-- Empty State Example (Hidden by default, shown for demonstration logic) -->
+<div class="hidden flex flex-col items-center justify-center py-20 text-center">
+<div class="size-20 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-4xl text-slate-400">search_off</span>
+</div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">No results found</h3>
+<p class="text-slate-500 dark:text-slate-400 max-w-xs">We couldn't find any books matching your search. Try different keywords or filters.</p>
+<button class="mt-6 text-primary font-bold px-6 py-2 rounded-xl bg-primary/10 hover:bg-primary/20 transition-colors">Clear all filters</button>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-10 px-6 lg:px-20 mt-12">
+<div class="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined">library_books</span>
+<span class="text-xl font-bold text-slate-900 dark:text-white">LibFlow</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm max-w-sm">Modern library management software empowering communities through digital discovery.</p>
+</div>
+<div class="flex gap-10">
+<div class="flex flex-col gap-2">
+<h5 class="font-bold text-sm text-slate-900 dark:text-white uppercase tracking-wider">Resources</h5>
+<a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary" href="#">Help Center</a>
+<a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary" href="#">Rules &amp; Policy</a>
+</div>
+<div class="flex flex-col gap-2">
+<h5 class="font-bold text-sm text-slate-900 dark:text-white uppercase tracking-wider">Account</h5>
+<a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary" href="#">My Profile</a>
+<a class="text-sm text-slate-500 dark:text-slate-400 hover:text-primary" href="#">Member Status</a>
+</div>
+</div>
+</div>
+<div class="max-w-[1440px] mx-auto pt-8 mt-8 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center">
+<p class="text-xs text-slate-400">© 2024 LibFlow SaaS. All rights reserved.</p>
+<div class="flex gap-4">
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined text-sm">language</span></a>
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined text-sm">lock</span></a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

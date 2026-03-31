@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add User Modal - Library Management System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3713ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#131022",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .custom-select {
+            appearance: none;
+            background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724px%27 height=%2724px%27 fill=%27rgb(55,19,236)%27 viewBox=%270 0 256 256%27%3e%3cpath d=%27M181.66,170.34a8,8,0,0,1,0,11.32l-48,48a8,8,0,0,1-11.32,0l-48-48a8,8,0,0,1,11.32-11.32L128,212.69l42.34-42.35A8,8,0,0,1,181.66,170.34Zm-96-84.68L128,43.31l42.34,42.35a8,8,0,0,0,11.32-11.32l-48-48a8,8,0,0,0-11.32,0l-48,48A8,8,0,0,0,85.66,85.66Z%27%3e%3c/path%3e%3c/svg%3e');
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<!-- Modal Backdrop -->
+<div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+<!-- Modal Container -->
+<div class="bg-white dark:bg-slate-900 w-full max-w-[520px] rounded-xl shadow-2xl overflow-hidden border border-primary/10">
+<!-- Modal Header -->
+<div class="px-8 pt-8 pb-4">
+<div class="flex items-center justify-between mb-2">
+<h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">Add New User</h2>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined text-slate-400">close</span>
+</button>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Fill in the details below to create a new account in the library system.</p>
+</div>
+<!-- Modal Content (Form) -->
+<form class="px-8 py-4 space-y-6">
+<!-- Full Name -->
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1" for="full-name">Full Name</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary/50 text-xl">person</span>
+<input class="w-full pl-12 pr-4 py-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-slate-900 dark:text-white placeholder:text-slate-400" id="full-name" placeholder="e.g. Jonathan Smith" type="text"/>
+</div>
+</div>
+<!-- Email Address -->
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1" for="email">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary/50 text-xl">mail</span>
+<input class="w-full pl-12 pr-4 py-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-slate-900 dark:text-white placeholder:text-slate-400" id="email" placeholder="jsmith@library.org" type="email"/>
+</div>
+</div>
+<!-- Password -->
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1" for="password">Initial Password</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary/50 text-xl">lock</span>
+<input class="w-full pl-12 pr-4 py-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-slate-900 dark:text-white placeholder:text-slate-400" id="password" placeholder="••••••••••••" type="password"/>
+</div>
+</div>
+<!-- Role Dropdown -->
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1" for="role">User Role</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary/50 text-xl">shield_person</span>
+<select class="custom-select w-full pl-12 pr-10 py-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary appearance-none transition-all text-slate-900 dark:text-white" id="role">
+<option disabled="" selected="" value="">Select a role</option>
+<option value="admin">Administrator</option>
+<option value="staff">Library Staff</option>
+<option value="member">General Member</option>
+</select>
+</div>
+</div>
+</form>
+<!-- Modal Footer -->
+<div class="px-8 py-8 flex flex-col sm:flex-row-reverse gap-3 bg-slate-50/50 dark:bg-slate-800/20 border-t border-slate-100 dark:border-slate-800 mt-4">
+<button class="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-3.5 rounded-xl transition-all shadow-lg shadow-primary/20 active:scale-[0.98]">
+                    Save User
+                </button>
+<button class="bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold px-8 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 transition-all active:scale-[0.98]">
+                    Cancel
+                </button>
+</div>
+</div>
+</div>
+<!-- Background UI Mockup (Context) -->
+<div class="min-h-screen p-8 opacity-20 pointer-events-none select-none">
+<div class="max-w-6xl mx-auto">
+<div class="flex items-center justify-between mb-8">
+<div class="h-10 w-48 bg-slate-300 dark:bg-slate-700 rounded-lg"></div>
+<div class="h-10 w-32 bg-primary rounded-lg"></div>
+</div>
+<div class="grid grid-cols-4 gap-6 mb-8">
+<div class="h-32 bg-slate-200 dark:bg-slate-800 rounded-xl"></div>
+<div class="h-32 bg-slate-200 dark:bg-slate-800 rounded-xl"></div>
+<div class="h-32 bg-slate-200 dark:bg-slate-800 rounded-xl"></div>
+<div class="h-32 bg-slate-200 dark:bg-slate-800 rounded-xl"></div>
+</div>
+<div class="space-y-4">
+<div class="h-16 bg-slate-200 dark:bg-slate-800 rounded-lg w-full"></div>
+<div class="h-16 bg-slate-200 dark:bg-slate-800 rounded-lg w-full"></div>
+<div class="h-16 bg-slate-200 dark:bg-slate-800 rounded-lg w-full"></div>
+<div class="h-16 bg-slate-200 dark:bg-slate-800 rounded-lg w-full"></div>
+<div class="h-16 bg-slate-200 dark:bg-slate-800 rounded-lg w-full"></div>
+</div>
+</div>
+</div>
+</body></html>

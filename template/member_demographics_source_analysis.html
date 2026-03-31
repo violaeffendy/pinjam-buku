@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Member Demographics &amp; Source Analysis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#5b13ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#161022",
+                        "accent-emerald": "#10b981",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+        }
+        .pie-segment {
+            transition: transform 0.2s;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 bg-white dark:bg-background-dark/50 backdrop-blur-md px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8 bg-primary/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined">library_books</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight">Library Admin</h2>
+</div>
+<label class="flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full bg-slate-100 dark:bg-slate-800">
+<div class="text-slate-500 flex items-center justify-center pl-4 rounded-l-xl">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-transparent focus:ring-0 text-base font-normal placeholder:text-slate-500 px-4 pl-2" placeholder="Search members..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-semibold" href="#">Dashboard</a>
+<a class="text-primary text-sm font-semibold border-b-2 border-primary pb-1" href="#">Members</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-semibold" href="#">Analytics</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-semibold" href="#">Settings</a>
+</nav>
+<div class="flex gap-3">
+<button class="flex items-center justify-center rounded-xl size-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-primary/10 hover:text-primary transition-all">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-xl size-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-primary/10 hover:text-primary transition-all">
+<span class="material-symbols-outlined text-xl">account_circle</span>
+</button>
+</div>
+<div class="bg-primary/20 rounded-full size-10 border-2 border-primary/30 overflow-hidden">
+<div class="w-full h-full bg-gradient-to-br from-primary to-accent-emerald opacity-80" data-alt="Abstract purple and green profile placeholder"></div>
+</div>
+</div>
+</header>
+<main class="flex-1 flex max-w-[1440px] mx-auto w-full">
+<!-- Sidebar Navigation -->
+<aside class="hidden lg:flex w-64 flex-col border-r border-primary/10 p-6 gap-8 bg-white dark:bg-background-dark/30">
+<div class="flex flex-col gap-1">
+<h1 class="text-slate-900 dark:text-slate-100 text-base font-bold">Analytics Portal</h1>
+<p class="text-slate-500 text-xs font-medium uppercase tracking-wider">Management Center</p>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined text-fill">group</span>
+<span class="text-sm font-bold">Demographics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="text-sm font-medium">Regional Data</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-sm font-medium">Reports</span>
+</a>
+</nav>
+<div class="mt-auto p-4 bg-primary/5 rounded-xl border border-primary/10">
+<p class="text-xs text-primary font-bold mb-1">PRO PLAN</p>
+<p class="text-xs text-slate-500 mb-3">Unlimited data exports enabled.</p>
+<div class="w-full h-1 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="w-2/3 h-full bg-primary"></div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<div class="flex-1 flex flex-col p-8 gap-8 overflow-y-auto">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div>
+<h2 class="text-3xl font-black tracking-tight text-slate-900 dark:text-white">Member Demographics &amp; Source Analysis</h2>
+<p class="text-slate-500 mt-1">Detailed insights into membership segments and registration origins.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-semibold hover:bg-slate-50 transition-all shadow-sm">
+<span class="material-symbols-outlined text-lg">calendar_today</span>
+                        Last 30 Days
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-xl text-sm font-bold hover:bg-primary/90 transition-all shadow-md shadow-primary/20">
+<span class="material-symbols-outlined text-lg">download</span>
+                        Export Report
+                    </button>
+</div>
+</div>
+<!-- Stats Overview Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-primary/5 shadow-md flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<p class="text-slate-500 text-sm font-semibold">Total Members</p>
+<span class="p-1.5 bg-primary/10 text-primary rounded-lg material-symbols-outlined">group</span>
+</div>
+<p class="text-3xl font-bold tracking-tight">12,450</p>
+<p class="flex items-center gap-1 text-accent-emerald text-sm font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                        +5.2% <span class="text-slate-400 font-normal ml-1">vs last month</span>
+</p>
+</div>
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-primary/5 shadow-md flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<p class="text-slate-500 text-sm font-semibold">New This Month</p>
+<span class="p-1.5 bg-accent-emerald/10 text-accent-emerald rounded-lg material-symbols-outlined">person_add</span>
+</div>
+<p class="text-3xl font-bold tracking-tight">840</p>
+<p class="flex items-center gap-1 text-accent-emerald text-sm font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                        +12.1% <span class="text-slate-400 font-normal ml-1">vs last month</span>
+</p>
+</div>
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-primary/5 shadow-md flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<p class="text-slate-500 text-sm font-semibold">Active Rate</p>
+<span class="p-1.5 bg-orange-500/10 text-orange-500 rounded-lg material-symbols-outlined">bolt</span>
+</div>
+<p class="text-3xl font-bold tracking-tight">92%</p>
+<p class="flex items-center gap-1 text-accent-emerald text-sm font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                        +1.5% <span class="text-slate-400 font-normal ml-1">retention rate</span>
+</p>
+</div>
+</div>
+<!-- Visualization Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+<!-- Membership Types Chart -->
+<div class="bg-white dark:bg-slate-800 p-8 rounded-xl border border-primary/5 shadow-md">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white">Membership Types</h3>
+<p class="text-slate-500 text-sm">Distribution across subscription tiers</p>
+</div>
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex flex-col lg:flex-row items-center gap-8">
+<div class="relative w-48 h-48 rounded-full border-[16px] border-slate-100 dark:border-slate-700 flex items-center justify-center">
+<!-- CSS Pie Chart Representation -->
+<div class="absolute inset-0 rounded-full" style="background: conic-gradient(#5b13ec 0% 60%, #10b981 60% 85%, #f59e0b 85% 100%); mask-image: radial-gradient(transparent 58%, black 60%);"></div>
+<div class="text-center">
+<p class="text-2xl font-black text-primary">12k+</p>
+<p class="text-[10px] text-slate-500 uppercase font-bold tracking-widest">Total</p>
+</div>
+</div>
+<div class="flex-1 w-full space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-3 rounded-full bg-primary"></div>
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Standard</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-sm font-bold text-slate-900 dark:text-white">60%</span>
+<span class="text-xs text-slate-400 w-12 text-right">7,470</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-3 rounded-full bg-accent-emerald"></div>
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Premium</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-sm font-bold text-slate-900 dark:text-white">25%</span>
+<span class="text-xs text-slate-400 w-12 text-right">3,112</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-3 rounded-full bg-orange-500"></div>
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Student</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-sm font-bold text-slate-900 dark:text-white">15%</span>
+<span class="text-xs text-slate-400 w-12 text-right">1,868</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Age Group Breakdown -->
+<div class="bg-white dark:bg-slate-800 p-8 rounded-xl border border-primary/5 shadow-md">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white">Age Group Breakdown</h3>
+<p class="text-slate-500 text-sm">Audience age demographics</p>
+</div>
+<div class="flex bg-slate-100 dark:bg-slate-700 p-1 rounded-lg">
+<button class="px-3 py-1 text-xs font-bold bg-white dark:bg-slate-600 rounded-md shadow-sm">Bar</button>
+<button class="px-3 py-1 text-xs font-bold text-slate-500">List</button>
+</div>
+</div>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold uppercase tracking-wider text-slate-500">
+<span>18 - 24 years</span>
+<span class="text-primary">32%</span>
+</div>
+<div class="h-2.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 32%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold uppercase tracking-wider text-slate-500">
+<span>25 - 34 years</span>
+<span class="text-primary">45%</span>
+</div>
+<div class="h-2.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 45%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold uppercase tracking-wider text-slate-500">
+<span>35 - 44 years</span>
+<span class="text-primary">15%</span>
+</div>
+<div class="h-2.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 15%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold uppercase tracking-wider text-slate-500">
+<span>45+ years</span>
+<span class="text-primary">8%</span>
+</div>
+<div class="h-2.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 8%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Registration Sources Section -->
+<div class="bg-white dark:bg-slate-800 p-8 rounded-xl border border-primary/5 shadow-md">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+<div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white">Registration Sources</h3>
+<p class="text-slate-500 text-sm">Where your members are coming from</p>
+</div>
+<div class="flex gap-2">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-slate-50 dark:bg-slate-700 rounded-lg border border-slate-200 dark:border-slate-600">
+<div class="size-2 rounded-full bg-primary"></div>
+<span class="text-xs font-bold">Mobile App</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-slate-50 dark:bg-slate-700 rounded-lg border border-slate-200 dark:border-slate-600">
+<div class="size-2 rounded-full bg-accent-emerald"></div>
+<span class="text-xs font-bold">On-site</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-slate-50 dark:bg-slate-700 rounded-lg border border-slate-200 dark:border-slate-600">
+<div class="size-2 rounded-full bg-orange-400"></div>
+<span class="text-xs font-bold">Web</span>
+</div>
+</div>
+</div>
+<!-- Bar Chart / Source Map Concept -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="flex flex-col gap-6">
+<div class="p-6 bg-primary/5 rounded-xl border border-primary/10 hover:border-primary/30 transition-all cursor-default group">
+<div class="flex justify-between items-center mb-4">
+<div class="size-10 rounded-lg bg-primary text-white flex items-center justify-center">
+<span class="material-symbols-outlined">smartphone</span>
+</div>
+<span class="text-2xl font-black text-slate-900 dark:text-white">42%</span>
+</div>
+<h4 class="text-sm font-bold text-slate-900 dark:text-white mb-1">Mobile App</h4>
+<p class="text-xs text-slate-500">Highest growth source this quarter. Primarily used by age group 18-34.</p>
+<div class="mt-4 h-1.5 w-full bg-primary/20 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 42%"></div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<div class="p-6 bg-accent-emerald/5 rounded-xl border border-accent-emerald/10 hover:border-accent-emerald/30 transition-all cursor-default group">
+<div class="flex justify-between items-center mb-4">
+<div class="size-10 rounded-lg bg-accent-emerald text-white flex items-center justify-center">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+<span class="text-2xl font-black text-slate-900 dark:text-white">35%</span>
+</div>
+<h4 class="text-sm font-bold text-slate-900 dark:text-white mb-1">On-site Kiosks</h4>
+<p class="text-xs text-slate-500">Consistent performance. Popular for immediate material checkout.</p>
+<div class="mt-4 h-1.5 w-full bg-accent-emerald/20 rounded-full overflow-hidden">
+<div class="h-full bg-accent-emerald" style="width: 35%"></div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<div class="p-6 bg-orange-500/5 rounded-xl border border-orange-500/10 hover:border-orange-500/30 transition-all cursor-default group">
+<div class="flex justify-between items-center mb-4">
+<div class="size-10 rounded-lg bg-orange-500 text-white flex items-center justify-center">
+<span class="material-symbols-outlined">public</span>
+</div>
+<span class="text-2xl font-black text-slate-900 dark:text-white">23%</span>
+</div>
+<h4 class="text-sm font-bold text-slate-900 dark:text-white mb-1">Web Portal</h4>
+<p class="text-xs text-slate-500">Steady traffic. Most registrations happen during evening hours.</p>
+<div class="mt-4 h-1.5 w-full bg-orange-500/20 rounded-full overflow-hidden">
+<div class="h-full bg-orange-500" style="width: 23%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Registration Heatmap Simulation -->
+<div class="mt-10 p-6 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-800">
+<div class="flex justify-between items-center mb-6">
+<h4 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">Hourly Registration Intensity</h4>
+<div class="flex gap-2 items-center">
+<span class="text-[10px] text-slate-400 font-bold">Low</span>
+<div class="flex gap-1">
+<div class="size-3 rounded bg-primary/20"></div>
+<div class="size-3 rounded bg-primary/40"></div>
+<div class="size-3 rounded bg-primary/60"></div>
+<div class="size-3 rounded bg-primary/80"></div>
+<div class="size-3 rounded bg-primary"></div>
+</div>
+<span class="text-[10px] text-slate-400 font-bold">High</span>
+</div>
+</div>
+<!-- Simplified Heatmap Row -->
+<div class="flex flex-col gap-2">
+<div class="flex gap-1 h-6">
+<div class="flex-1 bg-primary/10 rounded-sm"></div>
+<div class="flex-1 bg-primary/20 rounded-sm"></div>
+<div class="flex-1 bg-primary/10 rounded-sm"></div>
+<div class="flex-1 bg-primary/5 rounded-sm"></div>
+<div class="flex-1 bg-primary/30 rounded-sm"></div>
+<div class="flex-1 bg-primary/60 rounded-sm"></div>
+<div class="flex-1 bg-primary rounded-sm"></div>
+<div class="flex-1 bg-primary/80 rounded-sm"></div>
+<div class="flex-1 bg-primary/90 rounded-sm"></div>
+<div class="flex-1 bg-primary/70 rounded-sm"></div>
+<div class="flex-1 bg-primary/40 rounded-sm"></div>
+<div class="flex-1 bg-primary/20 rounded-sm"></div>
+</div>
+<div class="flex justify-between text-[10px] text-slate-400 font-bold px-1">
+<span>12 AM</span>
+<span>4 AM</span>
+<span>8 AM</span>
+<span>12 PM</span>
+<span>4 PM</span>
+<span>8 PM</span>
+<span>11 PM</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Analysis Note -->
+<div class="mt-4 flex flex-col md:flex-row items-center gap-6 p-6 bg-gradient-to-r from-primary/10 to-accent-emerald/10 rounded-xl border border-primary/10">
+<div class="size-14 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center shadow-inner">
+<span class="material-symbols-outlined text-primary text-3xl">lightbulb</span>
+</div>
+<div class="flex-1">
+<h4 class="text-lg font-bold text-slate-900 dark:text-white">Growth Insights</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm">Mobile App registrations have surpassed On-site kiosks for the first time this year. We recommend increasing server capacity for the app during peak evening hours (6 PM - 10 PM).</p>
+</div>
+<button class="px-6 py-2.5 bg-white dark:bg-slate-800 text-primary font-bold rounded-lg border border-primary/20 hover:shadow-md transition-all text-sm">View Full Insight</button>
+</div>
+</div>
+</main>
+</div>
+</body></html>

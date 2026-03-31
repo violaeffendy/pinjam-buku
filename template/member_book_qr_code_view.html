@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Member Book QR Code View</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1313ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101022",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/20 px-6 md:px-20 py-4 bg-background-light dark:bg-background-dark/50 backdrop-blur-md sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-3xl">auto_stories</span>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight">LibrosSaaS</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium" href="#">Dashboard</a>
+<a class="text-primary text-sm font-semibold border-b-2 border-primary" href="#">My Books</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium" href="#">Catalog</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center">
+<label class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-slate-400 text-lg">search</span>
+<input class="form-input h-10 w-64 rounded-xl border-none bg-slate-200 dark:bg-primary/10 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/50 transition-all" placeholder="Search library..." type="text"/>
+</label>
+</div>
+<button class="flex items-center justify-center rounded-xl h-10 w-10 bg-slate-200 dark:bg-primary/20 text-slate-700 dark:text-slate-300 hover:bg-primary/30 transition-colors">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<div class="h-10 w-10 rounded-full bg-primary/30 border border-primary/50 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User profile avatar portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0NnxNuyB3K8xc7WhQHTifWc5TdcItqsNtW9LRfyVSmmouM8NXglNKqVsdSlkkp8sxdN_MNlYqgXvJDgoklNBRqZHpC_N80JjQl5Oo7ZzkEx8hoaXCWl2ImYxA8NsdrYgOuEEAzYn-XA8tSPqldcInySMK7V9X7XZojEWBB0KcZCklhMiy9wRAF07DwmRtPOOqrfF4BHsZrXVkYrxBOeMxKv6Y43Ckv-as7lwb_klN-ZvyhC-U_yoVenz4zHCAMyXKcufSi-gWvtY"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col items-center justify-start p-6 md:p-10">
+<div class="w-full max-w-4xl space-y-6">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 text-sm font-medium text-slate-500 dark:text-slate-400">
+<a class="hover:text-primary" href="#">Dashboard</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<a class="hover:text-primary" href="#">My Books</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-slate-900 dark:text-slate-100">Pickup QR Code</span>
+</nav>
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div class="space-y-1">
+<h1 class="text-3xl md:text-4xl font-black text-slate-900 dark:text-slate-100 tracking-tight">Book Pickup QR Code</h1>
+<p class="text-slate-600 dark:text-slate-400 max-w-lg">Present this code to the librarian or scan it at the automated kiosk to complete your checkout process.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- QR Code Card -->
+<div class="lg:col-span-7 bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-primary/20 rounded-xl overflow-hidden shadow-2xl">
+<div class="p-8 flex flex-col items-center justify-center bg-white">
+<div class="relative p-6 bg-white rounded-lg border-4 border-slate-100">
+<div class="w-64 h-64 md:w-80 md:h-80 bg-slate-50 flex items-center justify-center relative overflow-hidden group">
+<!-- Mock QR Code with abstract pattern -->
+<div class="absolute inset-0 opacity-10 flex flex-wrap p-2">
+<div class="w-4 h-4 bg-slate-900 m-0.5"></div><div class="w-4 h-4 bg-white m-0.5"></div><div class="w-4 h-4 bg-slate-900 m-0.5"></div>
+</div>
+<div class="relative z-10 w-full h-full p-4">
+<img class="w-full h-full object-contain filter grayscale invert dark:invert-0" data-alt="Large high contrast QR code for book scanning" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0YObB3dNXEZ53KIA4DXWZJXLC4pg9A13d144iJMRwzHn-MKxASC-4y98AlK5gTQqfbTNOZzziWICC6s8Evd8PMUrG7xhH01AsthmxXxXav7OZjZVTsAQPjwZWK4L2e5lgBhM5keT2qr85F7IAMxws-whj6UUvvW-Y3EefeY8JwBdeKm3aHOvrHPv5I-DkYO56llwOeSX0PY_gTK01U26W24O1jOAUgYq8daTW75NQ2alwNBIgZkPjgO8FG_Ed08i7Au4i7hQkNfM"/>
+</div>
+</div>
+<!-- Scanning line simulation -->
+<div class="absolute top-0 left-0 w-full h-1 bg-primary/40 shadow-[0_0_15px_rgba(19,19,236,0.5)]"></div>
+</div>
+<div class="mt-8 w-full flex flex-col gap-4">
+<div class="flex justify-between items-center px-4 py-3 bg-slate-100 dark:bg-primary/10 rounded-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Code expires in:</span>
+</div>
+<div class="flex gap-2">
+<div class="flex flex-col items-center">
+<span class="bg-primary text-white font-bold px-2 py-1 rounded text-lg min-w-[36px] text-center">04</span>
+<span class="text-[10px] uppercase tracking-widest text-slate-500 mt-1">Min</span>
+</div>
+<span class="text-xl font-bold text-primary self-center pb-5">:</span>
+<div class="flex flex-col items-center">
+<span class="bg-primary text-white font-bold px-2 py-1 rounded text-lg min-w-[36px] text-center">59</span>
+<span class="text-[10px] uppercase tracking-widest text-slate-500 mt-1">Sec</span>
+</div>
+</div>
+</div>
+<button class="w-full py-4 bg-primary hover:bg-primary/90 text-white rounded-xl font-bold transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">download</span>
+                                        Save to Device
+                                    </button>
+</div>
+</div>
+<div class="px-8 py-4 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-200 dark:border-primary/10 flex justify-between items-center">
+<span class="text-xs text-slate-500 font-mono tracking-wider">ID: LIB-QR-882910-X</span>
+<button class="text-xs text-primary font-bold flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-sm">refresh</span>
+                                    Refresh Code
+                                </button>
+</div>
+</div>
+<!-- Book Details Card -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<div class="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-primary/20 rounded-xl p-6 shadow-sm">
+<div class="flex gap-4">
+<div class="w-24 h-36 rounded-lg overflow-hidden shadow-md flex-shrink-0 bg-primary/20">
+<img class="w-full h-full object-cover" data-alt="Book cover of The Great Gatsby" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGLh1MQX_cugr3Zp2zizaDkd7CIqN-0fYMvyXoNovAWDd4KXCowU7-KcReTfgzsIXzFcu0-xGoG4zrS_YWR-EOJ3lzZUo0KQ-y6r5ZCPvRlStg2AlZKUVQLF85FOxT2gXVlHTWNjpreybl2Q6eA8Rgf6ugb_FGCURyZ99L1fRWPEWsWzeYq411un0l8zpVnfTGESxnl-4upOSBD4M399ABDHJ09nnGS5JwIr1KD-21dBw71IN4qciii0i5dVwhvtGbZKRsi7Zpzwg"/>
+</div>
+<div class="flex flex-col justify-between py-1">
+<div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-slate-100 leading-tight">The Great Gatsby</h3>
+<p class="text-slate-600 dark:text-slate-400 font-medium">F. Scott Fitzgerald</p>
+</div>
+<div class="space-y-1">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                                                Ready for pickup
+                                            </span>
+<p class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+                                                Central Library, Floor 2
+                                            </p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-xl p-6">
+<h4 class="font-bold text-slate-900 dark:text-slate-100 mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">info</span>
+                                    Pickup Instructions
+                                </h4>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<div class="h-6 w-6 rounded-full bg-primary text-white text-xs flex items-center justify-center flex-shrink-0 mt-0.5">1</div>
+<p class="text-sm text-slate-600 dark:text-slate-400">Approach the self-service desk or library counter.</p>
+</li>
+<li class="flex items-start gap-3">
+<div class="h-6 w-6 rounded-full bg-primary text-white text-xs flex items-center justify-center flex-shrink-0 mt-0.5">2</div>
+<p class="text-sm text-slate-600 dark:text-slate-400">Scan the QR code on the left under the optical scanner.</p>
+</li>
+<li class="flex items-start gap-3">
+<div class="h-6 w-6 rounded-full bg-primary text-white text-xs flex items-center justify-center flex-shrink-0 mt-0.5">3</div>
+<p class="text-sm text-slate-600 dark:text-slate-400">Collect your book and the printed receipt if needed.</p>
+</li>
+</ul>
+</div>
+<div class="flex flex-col gap-3">
+<button class="flex items-center justify-center gap-2 py-3 px-4 border border-slate-300 dark:border-primary/20 text-slate-700 dark:text-slate-300 rounded-xl font-medium hover:bg-slate-100 dark:hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+                                    Need help? Contact support
+                                </button>
+<button class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-red-500 transition-colors">
+                                    Cancel Reservation
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="border-t border-slate-200 dark:border-primary/10 py-8 px-20">
+<div class="flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-2 text-slate-400">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="text-sm font-medium">© 2023 LibrosSaaS Management System</span>
+</div>
+<div class="flex gap-8">
+<a class="text-sm text-slate-500 hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-sm text-slate-500 hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-sm text-slate-500 hover:text-primary transition-colors" href="#">Help Center</a>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</body></html>
